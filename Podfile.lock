@@ -1,0 +1,20 @@
+PODS:
+  - Cordux (0.1.5)
+  - PinkyPromise (0.6.2)
+
+DEPENDENCIES:
+  - Cordux
+  - PinkyPromise
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Cordux
+    - PinkyPromise
+
+SPEC CHECKSUMS:
+  Cordux: 54a5a7f9d0431c4b1b3860109f2f91dc8899afe2
+  PinkyPromise: 182da8b6e5afa6f393faed4822d45b5007e91ede
+
+PODFILE CHECKSUM: 88fe34af7189f9cbd4a0716e96a93cc6f1f59341
+
+COCOAPODS: 1.5.3
