@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+
 		42B16E49457105B831193A58 /* Pods_MAIN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467950379961B900E76593 /* Pods_MAIN.framework */; };
 		A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B722437E67000C11BA9 /* AppDelegate.swift */; };
 		A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B742437E67000C11BA9 /* SceneDelegate.swift */; };
@@ -28,6 +29,7 @@
 		A6907B7B2437E67100C11BA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6907B7E2437E67100C11BA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6907B802437E67100C11BA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B6EB5A4B0D0A789C7408DA4B /* Pods_MAIN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAIN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
