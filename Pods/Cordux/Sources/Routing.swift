@@ -164,15 +164,11 @@ extension Route {
         components.reserveCapacity(minimumCapacity)
     }
 
-    #if swift(>=3)
-        public mutating func replaceSubrange<C : Collection where C.Iterator.Element == Iterator.Element>(_ subRange: Range<Int>, with newElements: C) {
-            components.replaceSubrange(subRange, with: newElements)
-        }
-    #else
-        public mutating func replaceRange<C : CollectionType where C.Generator.Element == Generator.Element>(_ subRange: Range<Int>, with newElements: C) {
-            components.replaceRange(subRange, with: newElements)
-        }
-    #endif
+  
+    public mutating func replaceSubrange<C : Collection>(_ subRange: Range<Int>, with newElements: C) where C.Iterator.Element == Iterator.Element {
+        components.replaceSubrange(subRange, with: newElements)
+    }
+   
 }
 
 public func +(lhs: Route, rhs: Route) -> Route {

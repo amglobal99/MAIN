@@ -32,7 +32,7 @@ public final class Store<State : StateType> {
         self.reducer = reducer
     }
 
-    public func subscribe<Subscriber : SubscriberType, SelectedState where Subscriber.StoreSubscriberStateType == SelectedState>(_ subscriber: Subscriber, _ transform: ((State) -> SelectedState)? = nil) {
+    public func subscribe<Subscriber : SubscriberType, SelectedState>(_ subscriber: Subscriber, _ transform: ((State) -> SelectedState)? = nil) where Subscriber.StoreSubscriberStateType == SelectedState {
         guard isNewSubscriber(subscriber) else {
             return
         }
