@@ -190,7 +190,7 @@ extension String: RouteConvertible {
 }
 
 public extension RawRepresentable where RawValue == String {
-    public func route() -> Route {
+    func route() -> Route {
         return self.rawValue.route()
     }
 }
