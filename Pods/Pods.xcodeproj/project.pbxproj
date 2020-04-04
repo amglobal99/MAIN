@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -64,19 +64,19 @@
 		67538092F3BD19042FCDDB597116C308 /* Context.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Context.swift; path = Sources/Context.swift; sourceTree = "<group>"; };
 		6D868745C3A6A4210B75E6F614A88BD5 /* Pods-MAIN-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-MAIN-dummy.m"; sourceTree = "<group>"; };
 		7D35F43F4AD3C9F7D4D161F540981C06 /* Pods-MAIN-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-MAIN-acknowledgements.plist"; sourceTree = "<group>"; };
-		810BEB67623ADDCF6D22EA4B9B41A239 /* PinkyPromise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = PinkyPromise.framework; path = PinkyPromise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		810BEB67623ADDCF6D22EA4B9B41A239 /* PinkyPromise.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PinkyPromise.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		811DD2E9BA96493143E6899E28B49C9D /* Pods-MAIN-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-MAIN-frameworks.sh"; sourceTree = "<group>"; };
 		8612169CDB408BD79F8186D34FAF16F9 /* PinkyPromise-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PinkyPromise-umbrella.h"; sourceTree = "<group>"; };
 		8C5D227FC124888F987537A52F008A9F /* PinkyPromise-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "PinkyPromise-prefix.pch"; sourceTree = "<group>"; };
 		920C672B6D61E14B861E2F498C0C22E2 /* Promise.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Promise.swift; path = Sources/Promise.swift; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		949DCB9720276650398D75061B0B5958 /* Result.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Result.swift; path = Sources/Result.swift; sourceTree = "<group>"; };
 		97D24B3C0CD561829A164A06A2EBA946 /* Cordux-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Cordux-dummy.m"; sourceTree = "<group>"; };
 		9821E96D7F51BFC3F0E862FD60F03EF1 /* Coordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Sources/Coordinator.swift; sourceTree = "<group>"; };
 		98EEC46922E969FAF3917F78826F2B54 /* Pods-MAIN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MAIN.release.xcconfig"; sourceTree = "<group>"; };
 		9E4E332D9A41F11A777DFC52874A686B /* Pods-MAIN-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-MAIN-umbrella.h"; sourceTree = "<group>"; };
 		A87CD92433A78C34F7B1FB21C5673658 /* SceneCoordinator.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SceneCoordinator.swift; path = Sources/SceneCoordinator.swift; sourceTree = "<group>"; };
-		AD458F27847B46E70D3A440D711613E4 /* Pods_MAIN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_MAIN.framework; path = "Pods-MAIN.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD458F27847B46E70D3A440D711613E4 /* Pods_MAIN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAIN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B3AC6420AD1B7954CFE8903C80E72DEF /* Cordux-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cordux-umbrella.h"; sourceTree = "<group>"; };
 		B53D21AA83F806671FF2C734A3474898 /* Reducer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Reducer.swift; path = Sources/Reducer.swift; sourceTree = "<group>"; };
 		B897A3EB752D1D3328CBB1375175C164 /* PinkyPromise.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = PinkyPromise.modulemap; sourceTree = "<group>"; };
@@ -87,7 +87,7 @@
 		EA79AF46A8D7E5A287A37C779D4C9276 /* Cordux.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Cordux.xcconfig; sourceTree = "<group>"; };
 		EEC2CC4F02911602C6275A5E09BB9EEE /* Pods-MAIN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-MAIN.debug.xcconfig"; sourceTree = "<group>"; };
 		F7CFF8F0DDE2061E9C76814660FC81A5 /* Cordux-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Cordux-prefix.pch"; sourceTree = "<group>"; };
-		FCCC9C37BA23EE571E58DAD5C0B18F19 /* Cordux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Cordux.framework; path = Cordux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FCCC9C37BA23EE571E58DAD5C0B18F19 /* Cordux.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Cordux.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF5CE6C253C923A9BE5151F486C3FBD9 /* Routing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Routing.swift; path = Sources/Routing.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -127,7 +127,6 @@
 				949DCB9720276650398D75061B0B5958 /* Result.swift */,
 				53A550D817511064A35BC27055F3592C /* Support Files */,
 			);
-			name = PinkyPromise;
 			path = PinkyPromise;
 			sourceTree = "<group>";
 		};
@@ -213,7 +212,6 @@
 				5BF5750829BF20D8938EBF4EBC82307D /* ViewControllerLifecycle.swift */,
 				48FA0F9F08225FDDDCDD41A9EC33B1B1 /* Support Files */,
 			);
-			name = Cordux;
 			path = Cordux;
 			sourceTree = "<group>";
 		};
@@ -340,14 +338,20 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0930;
-				LastUpgradeCheck = 0930;
+				LastUpgradeCheck = 1110;
+				TargetAttributes = {
+					52D6C5FA75F618AF790D32E324A8A57E = {
+						LastSwiftMigration = 1110;
+					};
+				};
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 7DB346D0F39D3F0E887471402A8071AB;
 			productRefGroup = AD26611241E10E10FE763D74F6929AD6 /* Products */;
@@ -475,7 +479,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -522,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -572,6 +577,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
@@ -612,6 +618,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -696,7 +703,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
