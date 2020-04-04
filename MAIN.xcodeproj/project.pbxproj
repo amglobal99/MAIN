@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		42B16E49457105B831193A58 /* Pods_MAIN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467950379961B900E76593 /* Pods_MAIN.framework */; };
+		A6240F7724393B300053BDDD /* WindowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F7624393B300053BDDD /* WindowCoordinator.swift */; };
+		A6240F7A24393CE00053BDDD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F7924393CE00053BDDD /* AppState.swift */; };
 		A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B722437E67000C11BA9 /* AppDelegate.swift */; };
 		A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B742437E67000C11BA9 /* SceneDelegate.swift */; };
 		A6907B772437E67000C11BA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B762437E67000C11BA9 /* ViewController.swift */; };
@@ -20,6 +22,8 @@
 		0FF5D73E16F3DD2FCB1ECE6D /* Pods-MAIN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAIN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MAIN/Pods-MAIN.debug.xcconfig"; sourceTree = "<group>"; };
 		6AAF8C8EC88A12CC78C5E5EE /* Pods-MAIN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAIN.release.xcconfig"; path = "Pods/Target Support Files/Pods-MAIN/Pods-MAIN.release.xcconfig"; sourceTree = "<group>"; };
 		91467950379961B900E76593 /* Pods_MAIN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAIN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A6240F7624393B300053BDDD /* WindowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowCoordinator.swift; sourceTree = "<group>"; };
+		A6240F7924393CE00053BDDD /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A6907B6F2437E67000C11BA9 /* MAIN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAIN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6907B722437E67000C11BA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6907B742437E67000C11BA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,6 +63,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		A6240F7824393B7D0053BDDD /* Coordinators */ = {
+			isa = PBXGroup;
+			children = (
+				A6240F7624393B300053BDDD /* WindowCoordinator.swift */,
+			);
+			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		A6240F7B24393D1B0053BDDD /* StateManagement */ = {
+			isa = PBXGroup;
+			children = (
+				A6240F7924393CE00053BDDD /* AppState.swift */,
+			);
+			path = StateManagement;
+			sourceTree = "<group>";
+		};
 		A6907B662437E67000C11BA9 = {
 			isa = PBXGroup;
 			children = (
@@ -87,6 +107,8 @@
 				A6907B7B2437E67100C11BA9 /* Assets.xcassets */,
 				A6907B7D2437E67100C11BA9 /* LaunchScreen.storyboard */,
 				A6907B802437E67100C11BA9 /* Info.plist */,
+				A6240F7824393B7D0053BDDD /* Coordinators */,
+				A6240F7B24393D1B0053BDDD /* StateManagement */,
 			);
 			path = MAIN;
 			sourceTree = "<group>";
@@ -210,7 +232,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				A6907B772437E67000C11BA9 /* ViewController.swift in Sources */,
+				A6240F7A24393CE00053BDDD /* AppState.swift in Sources */,
 				A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */,
+				A6240F7724393B300053BDDD /* WindowCoordinator.swift in Sources */,
 				A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,7 +383,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YEPB2Q5VF6;
 				INFOPLIST_FILE = MAIN/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.natsys.MAIN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -375,7 +402,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YEPB2Q5VF6;
 				INFOPLIST_FILE = MAIN/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.natsys.MAIN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
