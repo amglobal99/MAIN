@@ -1,20 +1,28 @@
 PODS:
   - Cordux (0.1.5)
+  - IGListDiffKit (4.0.0)
+  - IGListKit (4.0.0):
+    - IGListDiffKit (= 4.0.0)
   - PinkyPromise (0.6.2)
 
 DEPENDENCIES:
   - Cordux
+  - IGListKit (~> 4.0)
   - PinkyPromise
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Cordux
+    - IGListDiffKit
+    - IGListKit
     - PinkyPromise
 
 SPEC CHECKSUMS:
   Cordux: 54a5a7f9d0431c4b1b3860109f2f91dc8899afe2
+  IGListDiffKit: 665d6cf43ce726e676013db9c7d6c4294259b6b2
+  IGListKit: fd5a5d21935298f5849fa49d426843cff97b77c7
   PinkyPromise: 182da8b6e5afa6f393faed4822d45b5007e91ede
 
-PODFILE CHECKSUM: 88fe34af7189f9cbd4a0716e96a93cc6f1f59341
+PODFILE CHECKSUM: 0803c4377a44d821815096eb3ab6a21eb53a555d
 
 COCOAPODS: 1.5.3

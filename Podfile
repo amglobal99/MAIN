@@ -8,4 +8,5 @@ target 'MAIN' do
   # Pods for MAIN
   pod 'Cordux'
   pod 'PinkyPromise'
+  pod 'IGListKit', '~> 4.0'
 end
