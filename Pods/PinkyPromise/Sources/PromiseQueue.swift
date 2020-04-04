@@ -115,7 +115,7 @@ public extension Promise {
      In order to work with a `PromiseQueue`, use `enqueue` instead of `call`.
      The queue will invoke `call` when all its previously enqueued promises have completed.
      */
-    public func enqueue(in queue: PromiseQueue<Value>) {
+    func enqueue(in queue: PromiseQueue<Value>) {
         queue.add(self)
     }
     
