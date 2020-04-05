@@ -78,7 +78,7 @@ fileprivate extension UIWindow.Level {
 //    
 //}
 
-
+//MARK:- COORDINATOR
 
 class WindowCoordinator: Coordinator, Renderer {
     
@@ -97,38 +97,21 @@ class WindowCoordinator: Coordinator, Renderer {
     }
 
     let mainWindow: UIWindow
-   // var coordinatorForMainWindow: AppCoordinator
+    //var coordinatorForMainWindow: AppCoordinator
 
     let lunchWindow: UIWindow
-   // var coordinatorForLunchWindow: AutoLunchCoordinator?
-    
-    //var bugsnagNotifier: BugsnagMetadataNotifier!
-
-    
+   
     init() {
         let windowState = WindowState(keyWindow: .main)
-        
+
         var state = AppState(windowState: windowState, connectionState: .uninitialized)
-        
-        // JE: previously we hid these error messages in production.
-        // we keep getting the weird checkout error when user taps add item.
-        // i would like to know what error they're getting
-//        if CrashCoordinator.recentCrashDetected() {
-//            state.route = AppCoordinator.RouteSegment.crashReporter.route()
-//        } else {
-//            state.route = AppCoordinator.RouteSegment.login.route()
-//        }
-        
-        
         store = Store(initialState: state, reducer: AppReducer())
 
       //  let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
 
-       //coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
+       //let coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
         
         let sessionGuid = NSUUID().uuidString
-       // bugsnagNotifier = BugsnagMetadataNotifier(store: store, session: sessionGuid)
-        
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
         lunchWindow = UIWindow(frame: UIScreen.main.bounds)
 
