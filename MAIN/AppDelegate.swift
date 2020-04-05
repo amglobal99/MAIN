@@ -49,6 +49,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 import UIKit
 import Cordux
 
+
+
+public enum EnvironmentKind: String {
+    case DEV = "2-Development"
+    case TEST = "3-Test"
+    case PREPROD = "3a-Pre-Production"
+    case PROD = "4-Production"
+}
+
+
 typealias MainStore = Cordux.Store<AppState>?
 
 
@@ -66,25 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        
-        //CBL.globalLogger = globalLogger
-        
-        //DatabaseDefaults.registerDefaults()
-
-       // Bugsnag.start(withApiKey: "2677fd388b4d213dba0c172449636e87")
-
-       //  Theme.setup()
         UIViewController.swizzleLifecycleDelegatingViewControllerMethods()
-
         windowCoordinator = WindowCoordinator()
-
         windowCoordinator.start(route: Route())
-
-        
-        //Localizer.SwizzleLocalizedString()
-        
-       // UIViewController.preventPageSheetPresentation
-        
         return true
     }
     
@@ -95,32 +89,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    
-    
-    /*
     func changeEnvironmentAndExit(_ env: EnvironmentKind) {
-        guard DatabaseDefaults.currentEnvironment != env else {
-            let alert = UIAlertController(title: "Environment Configuration", message: "The app is already using the \(env) environment.", preferredStyle: .alert)
-            alert.addOKAction()
-            window?.rootViewController?.present(alert, animated: false, completion: nil)
-            return
-        }
-        
-        
         if let _ = window?.rootViewController?.presentedViewController {
             window?.rootViewController?.dismiss(animated: false, completion: nil)
         }
-        
         let alert = UIAlertController(title: "Changing Environments", message: "The app will now shutdown and switch to the \(env) environment. Please re-open the app.", preferredStyle: .alert)
-        alert.addOKAction() { _ in
-            DatabaseDefaults.set(env)
-            exit(0)
-        }
         window?.rootViewController?.present(alert, animated: false, completion: nil)
     }
     
+     
+     
+     
+     
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        globalLogger?.debug("AppDelegate started with deep link url: \(url) options:\(options)")
+        print("AppDelegate started with deep link url: \(url) options:\(options)")
         
         if url.scheme == "ideliver" {
             if url.path == "/config/environment/TEST" {
@@ -137,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
  
  
- */
+ 
  
  
  
