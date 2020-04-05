@@ -8,84 +8,161 @@
 
 
 
-/*
-import UIKit
+import Foundation
 import Cordux
-//import Bugsnag
 //import CBL
 
-typealias MainStore = Cordux.Store<AppState>?
+public enum RemoteServerAccessibilityStatus {
+    case accessible
+    case notAccessible
+}
 
 
-let globalEnableV2VR : Bool = (ProcessInfo.processInfo.environment["V2VR_ENABLED"] == "YES")
 
-class AppDelegate: UIResponder, UIApplicationDelegate {
+struct RouteSubscription {
+    let route: Cordux.Route
 
-    var windowCoordinator: WindowCoordinator!
-    private var window: UIWindow? {
-        return windowCoordinator.mainWindow
-    }
-
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        CBL.globalLogger = globalLogger
-        
-        DatabaseDefaults.registerDefaults()
-
-        Bugsnag.start(withApiKey: "2677fd388b4d213dba0c172449636e87")
-
-        Theme.setup()
-        UIViewController.swizzleLifecycleDelegatingViewControllerMethods()
-
-        windowCoordinator = WindowCoordinator()
-
-        windowCoordinator.start(Route())
-
-        Localizer.SwizzleLocalizedString()
-        
-        UIViewController.preventPageSheetPresentation
-        
-        return true
-    }
-    
-    func changeEnvironmentAndExit(_ env: EnvironmentKind) {
-        guard DatabaseDefaults.currentEnvironment != env else {
-            let alert = UIAlertController(title: "Environment Configuration", message: "The app is already using the \(env) environment.", preferredStyle: .alert)
-            alert.addOKAction()
-            window?.rootViewController?.present(alert, animated: false, completion: nil)
-            return
-        }
-        
-        
-        if let _ = window?.rootViewController?.presentedViewController {
-            window?.rootViewController?.dismiss(animated: false, completion: nil)
-        }
-        
-        let alert = UIAlertController(title: "Changing Environments", message: "The app will now shutdown and switch to the \(env) environment. Please re-open the app.", preferredStyle: .alert)
-        alert.addOKAction() { _ in
-            DatabaseDefaults.set(env)
-            exit(0)
-        }
-        window?.rootViewController?.present(alert, animated: false, completion: nil)
-    }
-    
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        globalLogger?.debug("AppDelegate started with deep link url: \(url) options:\(options)")
-        
-        if url.scheme == "ideliver" {
-            if url.path == "/config/environment/TEST" {
-                changeEnvironmentAndExit(.TEST)
-            } else if url.path == "/config/environment/DEV" {
-                changeEnvironmentAndExit(.DEV)
-            } else if url.path == "/config/environment/PROD" {
-                changeEnvironmentAndExit(.PROD)
-            } else if url.path == "/config/environment/PREPROD" {
-                changeEnvironmentAndExit(.PREPROD)
-            }
-        }
-        return true
+    init(_ state: AppState) {
+        route = state.route
     }
 }
 
 
 
-*/
+enum ConnectionState {
+    case uninitialized
+    case initialized(RemoteServerAccessibilityStatus)
+}
+
+enum ConnectionAction: Action {
+    case updateConnectionStatus(RemoteServerAccessibilityStatus)
+}
+
+
+enum WindowAction: Action {
+    case setKeyWindow(WindowKind)
+    case setWindowVisible(WindowKind, Bool)
+}
+
+enum Initialization {
+    case uninitialized
+    case initialized(Authentication)
+}
+
+enum Authentication {
+    case authenticated
+    case unauthenticated
+}
+
+enum LoadingState<T> {
+    case initialized
+    case loading
+    case loaded(T)
+    case failure(Error)
+}
+
+
+
+
+struct WindowState {
+    
+    let keyWindow:  WindowKind
+    let mainWindowVisible: Bool
+    let v2vrWindowVisible: Bool
+    let lunchWindowVisible: Bool
+    
+    init(keyWindow: WindowKind,
+         mainWindowVisible: Bool = true,
+         v2vrWindowVisible: Bool = false,
+         lunchWindowVisible: Bool = false) {
+        
+        self.keyWindow = keyWindow
+        self.mainWindowVisible = mainWindowVisible
+        self.v2vrWindowVisible = v2vrWindowVisible
+        self.lunchWindowVisible = lunchWindowVisible
+    }
+}
+
+
+
+
+
+struct AppState: StateType {
+    
+    var route: Cordux.Route = [] {
+        didSet {
+            print("Current Route: \(route)")
+        }
+    }
+    var initialization: Initialization = .uninitialized
+
+    var windowState: WindowState
+    var connectionState: ConnectionState
+    
+    init(route: Cordux.Route = [],
+         initialization: Initialization = .uninitialized,
+         windowState: WindowState,
+         connectionState: ConnectionState) {
+        self.route = route
+        self.initialization = initialization
+        self.windowState = windowState
+        self.connectionState = connectionState
+    }
+}
+
+
+
+/*
+extension AppState {
+    var isInBrowsingState: Bool {
+        guard case .authenticated(_) = authenticationState else {
+            return false
+        }
+        return true
+    }
+    var browsingState: BrowsingState {
+        get {
+            guard case let .authenticated(browsingState) = authenticationState else {
+                // JE: we're getting this error regularly in prod. adding more details
+                fatalError("We're not in a state where browsingState is available.  route=\(route) authenticationState=\(authenticationState)")
+            }
+            return browsingState
+        }
+    }
+
+    var authenticationState: Authentication {
+        get {
+            guard case let .initialized(authentication) = initialization else {
+                fatalError("initialization=\(initialization) instead of .initialized")
+            }
+            return authentication
+        }
+    }
+
+    var checkinState: CheckInState<UnverifiedCheckinLoad> {
+        guard let checkinState = browsingState.checkinState else {
+            fatalError("CheckinState was nil in \(#file) \(#function)")
+        }
+        return checkinState
+    }
+
+    var safeBrowsingState: BrowsingState? {
+        guard case let .initialized(.authenticated(browsingState)) = initialization else {
+            return nil
+        }
+        return browsingState
+    }
+    
+    var vehicleToVehicleReplenishmentState: VehicleToVehicleReplenishmentState? {
+        switch self.browsingState.vehicleToVehicleReplenishmentState{
+        case .loaded(let state):
+            return state
+        default:
+            return nil
+        }
+    }
+}
+
+ 
+
+ */

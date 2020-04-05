@@ -6,9 +6,12 @@
 //  Copyright © 2020 Natsys. All rights reserved.
 //
 
+
+/*
 import UIKit
 
 @UIApplicationMain
+
 
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -37,50 +40,64 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+*/
 
 
 
 
 
-/*
 import UIKit
 import Cordux
-//import Bugsnag
-//import CBL
 
 typealias MainStore = Cordux.Store<AppState>?
 
 
-let globalEnableV2VR : Bool = (ProcessInfo.processInfo.environment["V2VR_ENABLED"] == "YES")
+@UIApplicationMain
 
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var windowCoordinator: WindowCoordinator!
+    
     private var window: UIWindow? {
         return windowCoordinator.mainWindow
     }
 
+    
+    
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        CBL.globalLogger = globalLogger
         
-        DatabaseDefaults.registerDefaults()
+        //CBL.globalLogger = globalLogger
+        
+        //DatabaseDefaults.registerDefaults()
 
-        Bugsnag.start(withApiKey: "2677fd388b4d213dba0c172449636e87")
+       // Bugsnag.start(withApiKey: "2677fd388b4d213dba0c172449636e87")
 
-        Theme.setup()
+       //  Theme.setup()
         UIViewController.swizzleLifecycleDelegatingViewControllerMethods()
 
         windowCoordinator = WindowCoordinator()
 
-        windowCoordinator.start(Route())
+        windowCoordinator.start(route: Route())
 
-        Localizer.SwizzleLocalizedString()
         
-        UIViewController.preventPageSheetPresentation
+        //Localizer.SwizzleLocalizedString()
+        
+       // UIViewController.preventPageSheetPresentation
         
         return true
     }
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /*
     func changeEnvironmentAndExit(_ env: EnvironmentKind) {
         guard DatabaseDefaults.currentEnvironment != env else {
             let alert = UIAlertController(title: "Environment Configuration", message: "The app is already using the \(env) environment.", preferredStyle: .alert)
@@ -118,9 +135,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+ 
+ 
+ */
+ 
+ 
+ 
 }
 
 
-*/
+
 
 

@@ -11,7 +11,7 @@ import Cordux
 //import Bugsnag
 //import CBL
 
-/*
+
 
 enum WindowKind {
     case main
@@ -38,6 +38,10 @@ struct WindowGroupModel: WindowGroupModelType {
     let keyWindow: WindowKind
 }
 
+
+
+
+
 extension WindowGroupModel {
     static func make() -> (AppState) -> WindowGroupModelType {
         return { (state) -> WindowGroupModelType in
@@ -50,6 +54,10 @@ extension WindowGroupModel {
     }
 }
 
+ 
+ 
+ 
+ /*
 fileprivate extension UIWindow.Level {
     static let normal = UIWindow.Level.normal
     static let vehicleToVehicle = normal + 1
@@ -58,15 +66,22 @@ fileprivate extension UIWindow.Level {
     static let alert = UIWindow.Level.alert
 }
 
-class MockCoordinator: AnyCoordinator {
-    var route = Cordux.Route()
-    var rootViewController: UIViewController = UIViewController()
-    func start(_ route: Cordux.Route) {
-        rootViewController.view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-    }
-}
+ 
+*/
+
+
+
+
+
+
+//struct AppReducer {
+//    
+//}
+
+
 
 class WindowCoordinator: Coordinator, Renderer {
+    
     var route: Cordux.Route {
         get {
             return Route()
@@ -82,13 +97,14 @@ class WindowCoordinator: Coordinator, Renderer {
     }
 
     let mainWindow: UIWindow
-    var coordinatorForMainWindow: AppCoordinator
+   // var coordinatorForMainWindow: AppCoordinator
 
     let lunchWindow: UIWindow
-    var coordinatorForLunchWindow: AutoLunchCoordinator?
+   // var coordinatorForLunchWindow: AutoLunchCoordinator?
     
-    var bugsnagNotifier: BugsnagMetadataNotifier!
+    //var bugsnagNotifier: BugsnagMetadataNotifier!
 
+    
     init() {
         let windowState = WindowState(keyWindow: .main)
         
@@ -97,28 +113,33 @@ class WindowCoordinator: Coordinator, Renderer {
         // JE: previously we hid these error messages in production.
         // we keep getting the weird checkout error when user taps add item.
         // i would like to know what error they're getting
-        if CrashCoordinator.recentCrashDetected() {
-            state.route = AppCoordinator.RouteSegment.crashReporter.route()
-        } else {
-            state.route = AppCoordinator.RouteSegment.login.route()
-        }
+//        if CrashCoordinator.recentCrashDetected() {
+//            state.route = AppCoordinator.RouteSegment.crashReporter.route()
+//        } else {
+//            state.route = AppCoordinator.RouteSegment.login.route()
+//        }
+        
+        
         store = Store(initialState: state, reducer: AppReducer())
 
-        let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
+      //  let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
 
-        coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
+       //coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
         
         let sessionGuid = NSUUID().uuidString
-        bugsnagNotifier = BugsnagMetadataNotifier(store: store, session: sessionGuid)
+       // bugsnagNotifier = BugsnagMetadataNotifier(store: store, session: sessionGuid)
         
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
         lunchWindow = UIWindow(frame: UIScreen.main.bounds)
 
-        setupMainWindow()
-        coordinatorForMainWindow.windowCoordinator = self
+       // setupMainWindow()
+       // coordinatorForMainWindow.windowCoordinator = self
         
         store.subscribe(self, WindowGroupModel.make())
     }
+    
+    
+    /*
     
     func initAutoLunchCoordinator(store: Store<AppState>, provider: ProviderType) {
         coordinatorForLunchWindow = AutoLunchCoordinator(store: store, provider: provider)
@@ -138,11 +159,21 @@ class WindowCoordinator: Coordinator, Renderer {
         lunchWindow.windowLevel = UIWindow.Level.lunch
     }
 
-    func start(_ route: Cordux.Route) {
-        coordinatorForMainWindow.start(store.state.route)
-        coordinatorForLunchWindow?.start(Route())
+     */
+     
+     
+    //MARK:- START
+    
+    func start(route: Cordux.Route) {
+       // coordinatorForMainWindow.start(store.state.route)
+      //  coordinatorForLunchWindow?.start(Route())
     }
 
+
+    
+    
+    //MARK:- RENDER
+    
     func render(_ viewModel: WindowGroupModel) {
         lunchWindow.isHidden = viewModel.lunchWindow.isHidden
         mainWindow.isHidden = viewModel.mainWindow.isHidden
@@ -155,11 +186,11 @@ class WindowCoordinator: Coordinator, Renderer {
             break
         }
     }
-}
+    
+    
+}//end class
 
  
  
  
- */
-
-
+ 
