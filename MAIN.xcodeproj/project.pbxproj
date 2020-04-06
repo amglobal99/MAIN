@@ -15,6 +15,7 @@
 		A6240F81243A682E0053BDDD /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F80243A682E0053BDDD /* AppCoordinator.swift */; };
 		A6240F84243A88B30053BDDD /* BackgroundContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F83243A88B30053BDDD /* BackgroundContainerViewController.swift */; };
 		A6240F87243A8AE80053BDDD /* BackgroundContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6240F86243A8AE80053BDDD /* BackgroundContainerViewController.storyboard */; };
+		A6240F89243B56400053BDDD /* WindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F88243B56400053BDDD /* WindowState.swift */; };
 		A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B722437E67000C11BA9 /* AppDelegate.swift */; };
 		A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B742437E67000C11BA9 /* SceneDelegate.swift */; };
 		A6907B772437E67000C11BA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B762437E67000C11BA9 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		A6240F80243A682E0053BDDD /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		A6240F83243A88B30053BDDD /* BackgroundContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainerViewController.swift; sourceTree = "<group>"; };
 		A6240F86243A8AE80053BDDD /* BackgroundContainerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BackgroundContainerViewController.storyboard; sourceTree = "<group>"; };
+		A6240F88243B56400053BDDD /* WindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowState.swift; sourceTree = "<group>"; };
 		A6907B6F2437E67000C11BA9 /* MAIN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAIN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6907B722437E67000C11BA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6907B742437E67000C11BA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				A6240F7924393CE00053BDDD /* AppState.swift */,
 				A6240F7C24397CE50053BDDD /* AppReducer.swift */,
+				A6240F88243B56400053BDDD /* WindowState.swift */,
 			);
 			path = StateManagement;
 			sourceTree = "<group>";
@@ -272,6 +275,7 @@
 				A6240F7F243A67C50053BDDD /* MockCoordinator.swift in Sources */,
 				A6240F84243A88B30053BDDD /* BackgroundContainerViewController.swift in Sources */,
 				A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */,
+				A6240F89243B56400053BDDD /* WindowState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

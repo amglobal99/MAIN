@@ -8,9 +8,6 @@
 
 import UIKit
 import Cordux
-//import Bugsnag
-//import CBL
-
 
 
 enum WindowKind {
@@ -37,9 +34,6 @@ struct WindowGroupModel: WindowGroupModelType {
     let lunchWindow: WindowModelType
     let keyWindow: WindowKind
 }
-
-
-
 
 
 extension WindowGroupModel {
@@ -71,13 +65,6 @@ fileprivate extension UIWindow.Level {
 
 
 
-
-
-
-//struct AppReducer {
-//    
-//}
-
 //MARK:- COORDINATOR
 
 class WindowCoordinator: Coordinator, Renderer {
@@ -97,64 +84,45 @@ class WindowCoordinator: Coordinator, Renderer {
     }
 
     let mainWindow: UIWindow
-    //var coordinatorForMainWindow: AppCoordinator
+    var coordinatorForMainWindow: AppCoordinator
 
     let lunchWindow: UIWindow
    
     init() {
+        /// create Window State
         let windowState = WindowState(keyWindow: .main)
-
-        var state = AppState(windowState: windowState, connectionState: .uninitialized)
-        store = Store(initialState: state, reducer: AppReducer())
-
-      //  let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
-
-       //let coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
         
-        let sessionGuid = NSUUID().uuidString
+        /// create App State
+        let state = AppState(windowState: windowState, connectionState: .uninitialized)
+        
+        /// create store
+        store = Store(initialState: state, reducer: AppReducer())
+        
+        let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
+        coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
+        //let sessionGuid = NSUUID().uuidString
+        
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
         lunchWindow = UIWindow(frame: UIScreen.main.bounds)
-
-       // setupMainWindow()
-       // coordinatorForMainWindow.windowCoordinator = self
-        
+        setupMainWindow()
+        coordinatorForMainWindow.windowCoordinator = self
         store.subscribe(self, WindowGroupModel.make())
     }
     
-    
-    /*
-    
-    func initAutoLunchCoordinator(store: Store<AppState>, provider: ProviderType) {
-        coordinatorForLunchWindow = AutoLunchCoordinator(store: store, provider: provider)
-        setupLunchWindow()
-        coordinatorForLunchWindow?.start(Route())
-    }
-
     private func setupMainWindow() {
         mainWindow.rootViewController = coordinatorForMainWindow.rootViewController
-        mainWindow.tintColor = Theme.Colors.tealishColor()
+       // mainWindow.tintColor = Theme.Colors.tealishColor()
         mainWindow.windowLevel = UIWindow.Level.normal
     }
 
-    private func setupLunchWindow() {
-        lunchWindow.rootViewController = coordinatorForLunchWindow?.rootViewController
-        lunchWindow.tintColor = Theme.Colors.tealishColor()
-        lunchWindow.windowLevel = UIWindow.Level.lunch
-    }
-
-     */
-     
-     
+    
     //MARK:- START
     
     func start(route: Cordux.Route) {
-       // coordinatorForMainWindow.start(store.state.route)
-      //  coordinatorForLunchWindow?.start(Route())
+        coordinatorForMainWindow.start(route: store.state.route)
     }
 
 
-    
-    
     //MARK:- RENDER
     
     func render(_ viewModel: WindowGroupModel) {

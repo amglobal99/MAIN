@@ -21,7 +21,7 @@ public protocol StateType {
 }
 
 public final class Store<State : StateType> {
-    var state: State
+    public fileprivate (set) var state: State
     var reducer: AnyReducer
 
     typealias SubscriptionType = Subscription<State>
