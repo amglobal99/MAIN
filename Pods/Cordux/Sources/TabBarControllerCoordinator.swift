@@ -41,21 +41,12 @@ public extension TabBarControllerCoordinator {
     var currentScene: AnyCoordinator? { return scenes[tabBarController.selectedIndex].coordinator }
 
     func changeScene(_ route: Route) {
-        #if swift(>=3)
-            for (index, scene) in scenes.enumerated() {
-                if route.first == scene.prefix {
-                    tabBarController.selectedIndex = index
-                    break
-                }
+        for (index, scene) in scenes.enumerated() {
+            if route.first == scene.prefix {
+                tabBarController.selectedIndex = index
+                break
             }
-        #else
-            for (index, scene) in scenes.enumerate() {
-                if route.first == scene.prefix {
-                    tabBarController.selectedIndex = index
-                    break
-                }
-            }
-        #endif
+        }
     }
 
     func setRouteForViewController(_ viewController: UIViewController) -> Bool {

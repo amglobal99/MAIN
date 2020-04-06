@@ -34,27 +34,39 @@ extension Action {
     }
 }
 
-//MARK: - App Reducer
+//MARK: - ****** App Reducer *****
 
 struct AppReducer: Reducer {
 
+    /// This function is called every time an action is sent to store.
+    /// The reducer will give us a new App State. We need to run 4 reducers to get new values for each component.
+    /// REMEMBER: App State is made up of 4 components:
+    /// 1. InitializationKind
+    /// 2. Route
+    /// 3. Window State
+    /// 4. Connection State
     func handleAction(_ action: Action, state: AppState) -> AppState {
-        
         print("Handling action: \(type(of:action)).\(action.shortName)")
         
+        /// get new InitializationKind and Route
         let (intialization, route) = initializationReducer(action, state: state.initialization, route: state.route)
+        
+        /// get new Window State
+        let windowState = windowsReducer(action, state: state.windowState)
+        
+        /// get new Connection State
+        let connectionState = connectionReducer(action, state: state.connectionState)
         
         return AppState(route: route,
                         initialization: intialization,
-                        windowState: windowsReducer(action, state: state.windowState),
-                        connectionState: connectionReducer(action, state: state.connectionState))
+                        windowState: windowState,
+                        connectionState: connectionState)
     }
 }
 
 
 
-
-//MARK: - Windows Reducer
+//MARK: - ***** Windows Reducer *****
 
 func windowsReducer(_ action: Action, state: WindowState) -> WindowState {
     
@@ -83,7 +95,7 @@ func windowsReducer(_ action: Action, state: WindowState) -> WindowState {
 
 
 
-//MARK: - Connection Reducer
+//MARK: - ***** Connection Reducer *****
 
 func connectionReducer(_ action: Action, state: ConnectionStateKind) -> ConnectionStateKind {
     guard let connectionAction = action as? ConnectionActionKind,
@@ -98,7 +110,7 @@ func connectionReducer(_ action: Action, state: ConnectionStateKind) -> Connecti
 
 
 
-//MARK:-  Initialization Reducer
+//MARK:-  ***** Initialization Reducer *****
 
 
 

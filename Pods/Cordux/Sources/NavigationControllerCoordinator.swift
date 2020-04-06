@@ -20,11 +20,7 @@ public extension NavigationControllerCoordinator  {
         get {
             var route: Route = []
             navigationController.viewControllers.forEach { vc in
-                #if swift(>=3)
                     route.append(contentsOf: vc.corduxContext?.routeSegment.route() ?? [])
-                #else
-                    route.appendContentsOf(vc.corduxContext?.routeSegment.route() ?? [])
-                #endif
             }
             return route
         }

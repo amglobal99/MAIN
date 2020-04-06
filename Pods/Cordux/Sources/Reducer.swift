@@ -8,10 +8,10 @@
 
 import Foundation
 
-public protocol ReducerType {
-    associatedtype State
-    func handleAction(_ action: Action, state: State) -> State
-}
+//public protocol ReducerType {
+//    associatedtype State
+//    func handleAction(_ action: Action, state: State) -> State
+//}
 
 public protocol AnyReducer {
     func _handleAction(_ action: Action, state: StateType) -> StateType
@@ -22,12 +22,12 @@ public protocol Reducer: AnyReducer {
     func handleAction(_ action: Action, state: ReducerStateType) -> ReducerStateType
 }
 
+
 extension Reducer {
     public func _handleAction(_ action: Action, state: StateType) -> StateType {
         return withSpecificTypes(action, state: state, function: handleAction)
     }
 }
-
 
 
 func withSpecificTypes<SpecificStateType, Action>(_ action: Action, state genericStateType: StateType, function:  (_ action: Action, _ state: SpecificStateType) -> SpecificStateType) -> StateType {
