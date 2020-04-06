@@ -112,8 +112,6 @@ class WindowCoordinator: Coordinator, Renderer {
         /// assign coordinator for main window
         coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
         
-        //let sessionGuid = NSUUID().uuidString
-        
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
         lunchWindow = UIWindow(frame: UIScreen.main.bounds)
         
@@ -148,16 +146,13 @@ class WindowCoordinator: Coordinator, Renderer {
         case .lunch where !lunchWindow.isKeyWindow:
             lunchWindow.makeKey()
         case .main where !mainWindow.isKeyWindow:
+            /// Use this method to make the window key without changing its visibility.
+            /// The key window receives keyboard and other non-touch related events.
             mainWindow.makeKey()
         default:
             break
         }
     }
     
-    
 }//end class
 
- 
- 
- 
- 

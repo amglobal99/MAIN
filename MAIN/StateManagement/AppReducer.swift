@@ -9,17 +9,17 @@
 import Foundation
 import Cordux
 
-public enum ActionLoggingLevel {
-    case none
-    case actionName
-    case actionDetails
-}
+//public enum ActionLoggingLevel {
+//    case none
+//    case actionName
+//    case actionDetails
+//}
 
 //MARK: - Protocol
 
-public protocol ActionLogPrintable {
-    var logLevel: ActionLoggingLevel { get }
-}
+//public protocol ActionLogPrintable {
+//    var logLevel: ActionLoggingLevel { get }
+//}
 
 //MARK: - Action
 
@@ -33,6 +33,11 @@ extension Action {
         }
     }
 }
+
+
+
+
+
 
 //MARK: - ****** App Reducer *****
 
@@ -63,6 +68,146 @@ struct AppReducer: Reducer {
                         connectionState: connectionState)
     }
 }
+
+
+
+
+
+
+//MARK:-  ***** Initialization Reducer *****
+
+
+/// This function calls other reducers based on the action.
+func initializationReducer(_ action: Action, state: InitializationKind, route: Cordux.Route) -> (InitializationKind, Cordux.Route) {
+    switch (action, state) {
+        //    case let (action as InitialDownloadAction, _):
+        //        return initialDownloadActionReducer(action, state: state, route: route)
+        //    case let (action as LoginAction, .initialized(.unauthenticated(loginState))):
+        //        return (.initialized(.unauthenticated(loginActionReducer(action, state: loginState))), route)
+        //        case let (action as AuthenticationAction, _):
+        //        return authenticationActionReducer(action, state: state, route: route)
+        //
+        //        case let (action as EmailStateAction, state):
+        //        if case let .initialized(.authenticated(browsingState)) = state {
+        //            return browsingStateActionReducer(action, state: browsingState, route: route)
+        //        }
+        //        fatalError("Accessing browsing state when we shouldn't")
+        //
+        
+        
+    default:
+        return (state, route)
+    }
+    return (state, route)
+}
+
+
+
+/*
+ 
+ 
+ func initializationReducer(_ action: Action, state: Initialization, route: Cordux.Route) -> (Initialization, Cordux.Route) {
+     switch (action, state) {
+     case let (action as InitialDownloadAction, _):
+         return initialDownloadActionReducer(action, state: state, route: route)
+     case let (action as LoginAction, .initialized(.unauthenticated(loginState))):
+         return (.initialized(.unauthenticated(loginActionReducer(action, state: loginState))), route)
+     case let (action as AuthenticationAction, _):
+         return authenticationActionReducer(action, state: state, route: route)
+     case let (action as DeliveriesAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return deliveriesActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("")
+     case let (action as CheckoutVehicleAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as CheckInActionWrapper, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as VehicleReplenishmentAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as DeliveryDetailStopAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as CustomerDetailStateAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as PrinterStateAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as EmailStateAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as FilterDeliveriesStateAction, state):
+       if case let .initialized(.authenticated(browsingState)) = state {
+         return browsingStateActionReducer(action, state: browsingState, route: route)
+       }
+     case let (action as UserPreferencesStateAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+     case let (action as CopiedTicketAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+     case let (action as MyVehicleAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+     case let (action as VehicleToVehicleReplenishmentAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+     case let (action as VehicleToVehicleReplenishmentLoadedAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+     case let (action as LunchAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+     case let (action as ReorderAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+
+     case let (action as RequestLoadStateAction, state):
+         if case let .initialized(.authenticated(browsingState)) = state {
+             return browsingStateActionReducer(action, state: browsingState, route: route)
+         }
+         fatalError("Accessing browsing state when we shouldn't")
+
+     default:
+         return (state, route)
+     }
+     return (state, route)
+ }
+
+ 
+ 
+ 
+ 
+ */
+
+
+
 
 
 
@@ -105,28 +250,6 @@ func connectionReducer(_ action: Action, state: ConnectionStateKind) -> Connecti
     
     return .initialized(newStatus)
 }
-
-
-
-
-
-//MARK:-  ***** Initialization Reducer *****
-
-
-
-func initializationReducer(_ action: Action, state: InitializationKind, route: Cordux.Route) -> (InitializationKind, Cordux.Route) {
-    switch (action, state) {
-//    case let (action as InitialDownloadAction, _):
-//        return initialDownloadActionReducer(action, state: state, route: route)
-//    case let (action as LoginAction, .initialized(.unauthenticated(loginState))):
-//        return (.initialized(.unauthenticated(loginActionReducer(action, state: loginState))), route)
-
-    default:
-        return (state, route)
-    }
-    return (state, route)
-}
-
 
 
 
