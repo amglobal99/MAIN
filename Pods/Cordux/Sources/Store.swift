@@ -21,9 +21,9 @@ public protocol StateType {
 }
 
 public final class Store<State : StateType> {
+    
     public fileprivate (set) var state: State
     var reducer: AnyReducer
-
     typealias SubscriptionType = Subscription<State>
     var subscriptions: [SubscriptionType] = []
 
@@ -52,7 +52,6 @@ public final class Store<State : StateType> {
         if let index = subscriptions.firstIndex(where: { return $0.subscriber === subscriber }) {
             subscriptions.remove(at: index)
         }
-        
     }
 
     public func route<T>(_ action: RouteAction<T>) {

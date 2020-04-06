@@ -8,11 +8,6 @@
 
 import Foundation
 
-//public protocol ReducerType {
-//    associatedtype State
-//    func handleAction(_ action: Action, state: State) -> State
-//}
-
 public protocol AnyReducer {
     func _handleAction(_ action: Action, state: StateType) -> StateType
 }

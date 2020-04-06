@@ -81,7 +81,7 @@ struct AppState: StateType {
     
     /// This initializer is called from following locations:
     /// 1. init() function in WindowCoordinator.swift
-    /// 2.  handleAction() function in AppReducer.swift
+    /// 2. handleAction() function in AppReducer.swift
     init(route: Cordux.Route = [],
          initialization: InitializationKind = .uninitialized,
          windowState: WindowState,
