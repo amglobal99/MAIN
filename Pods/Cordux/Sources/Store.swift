@@ -27,6 +27,10 @@ public final class Store<State : StateType> {
     typealias SubscriptionType = Subscription<State>
     var subscriptions: [SubscriptionType] = []
 
+    //MARK:- Initializer
+    
+    /// This initializer is called from the init() function inside WindowCoordinator.swift
+    /// Note: The reducer passed in is AppReducer()
     public init(initialState: State, reducer: AnyReducer) {
         self.state = initialState
         self.reducer = reducer
@@ -38,19 +42,17 @@ public final class Store<State : StateType> {
         }
 
         subscriptions.append(Subscription(subscriber: subscriber, transform: transform))
-        subscriber._newState(transform?(state) as Any ?? state)
+      //  subscriber._newState(transform?(state) as Any ?? state)
+        subscriber._newState(transform?(state) as Any)
+        
+        
     }
 
     public func unsubscribe<Subscriber : AnyStoreSubscriber>(_ subscriber: Subscriber) {
-        #if swift(>=3)
         if let index = subscriptions.firstIndex(where: { return $0.subscriber === subscriber }) {
             subscriptions.remove(at: index)
-            }
-        #else
-            if let index = subscriptions.indexOf({ return $0.subscriber === subscriber }) {
-                subscriptions.removeAtIndex(index)
-            }
-        #endif
+        }
+        
     }
 
     public func route<T>(_ action: RouteAction<T>) {
@@ -62,21 +64,20 @@ public final class Store<State : StateType> {
         state.route = reduce(action, route: state.route)
     }
 
+    //MARK:- Dispatch
+    
     public func dispatch(_ action: Action) {
+        /// Note: The call below will take us to AppReducer.swift
+        /// Refer to init() function. We pass in AppReducer() as reducer.
         state = reducer._handleAction(action, state: state) as! State
         subscriptions.forEach { $0.subscriber?._newState($0.transform?(state) ?? state) }
     }
 
     func isNewSubscriber(_ subscriber: AnyStoreSubscriber) -> Bool {
-        #if swift(>=3)
-            guard !subscriptions.contains(where: { $0.subscriber === subscriber }) else {
-                return false
-            }
-        #else
-            guard !subscriptions.contains({ $0.subscriber === subscriber }) else {
-                return false
-            }
-        #endif
+        guard !subscriptions.contains(where: { $0.subscriber === subscriber }) else {
+            return false
+        }
+        
         return true
     }
 }

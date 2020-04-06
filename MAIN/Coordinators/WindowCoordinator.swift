@@ -9,18 +9,10 @@
 import UIKit
 import Cordux
 
-
-enum WindowKind {
-    case main
-    case lunch
-}
+//MARK:- Protocols
 
 protocol WindowModelType {
     var isHidden: Bool { get }
-}
-
-struct WindowModel: WindowModelType {
-    let isHidden: Bool
 }
 
 protocol WindowGroupModelType {
@@ -29,14 +21,29 @@ protocol WindowGroupModelType {
     var keyWindow: WindowKind { get }
 }
 
+enum WindowKind {
+    case main
+    case lunch
+}
+
+//MARK:- Window Model
+
+struct WindowModel: WindowModelType {
+    let isHidden: Bool
+}
+
+//MARK:- Window Group Model
+
 struct WindowGroupModel: WindowGroupModelType {
     let mainWindow: WindowModelType
     let lunchWindow: WindowModelType
     let keyWindow: WindowKind
 }
 
+//MARK:- make()
 
 extension WindowGroupModel {
+    
     static func make() -> (AppState) -> WindowGroupModelType {
         return { (state) -> WindowGroupModelType in
             return WindowGroupModel(
@@ -46,6 +53,7 @@ extension WindowGroupModel {
             )
         }
     }
+    
 }
 
  
@@ -69,6 +77,11 @@ fileprivate extension UIWindow.Level {
 
 class WindowCoordinator: Coordinator, Renderer {
     
+    let mainWindow: UIWindow
+    let lunchWindow: UIWindow
+    let store: Store<AppState>
+    var coordinatorForMainWindow: AppCoordinator
+    
     var route: Cordux.Route {
         get {
             return Route()
@@ -77,17 +90,13 @@ class WindowCoordinator: Coordinator, Renderer {
             return
         }
     }
-    let store: Store<AppState>
-
+    
     var rootViewController: UIViewController {
         return mainWindow.rootViewController!
     }
 
-    let mainWindow: UIWindow
-    var coordinatorForMainWindow: AppCoordinator
-
-    let lunchWindow: UIWindow
-   
+    /// This initializer is called from the 'application(_ application: UIApplication, didFinishLaunchingWithOptions' function
+    /// in AppDelegate.swift
     init() {
         /// create Window State
         let windowState = WindowState(keyWindow: .main)
@@ -99,19 +108,26 @@ class WindowCoordinator: Coordinator, Renderer {
         store = Store(initialState: state, reducer: AppReducer())
         
         let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
+        
+        /// assign coordinator for main window
         coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
+        
         //let sessionGuid = NSUUID().uuidString
         
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
         lunchWindow = UIWindow(frame: UIScreen.main.bounds)
+        
         setupMainWindow()
+        
         coordinatorForMainWindow.windowCoordinator = self
+        
+        /// subscribe to store
         store.subscribe(self, WindowGroupModel.make())
     }
     
     private func setupMainWindow() {
         mainWindow.rootViewController = coordinatorForMainWindow.rootViewController
-       // mainWindow.tintColor = Theme.Colors.tealishColor()
+        mainWindow.tintColor = UIColor.gray
         mainWindow.windowLevel = UIWindow.Level.normal
     }
 

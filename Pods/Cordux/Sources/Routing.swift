@@ -24,22 +24,13 @@ public enum RouteAction<T: RouteConvertible>: Action {
 }
 
 
+extension Route:
+    RandomAccessCollection,
+    Sequence,
+    RangeReplaceableCollection,
+    ExpressibleByArrayLiteral
+{}
 
-#if swift(>=3)
-    extension Route:
-        RandomAccessCollection,
-        Sequence,
-        RangeReplaceableCollection,
-        ExpressibleByArrayLiteral
-    {}
-#else
-    extension Route:
-        CollectionType,
-        SequenceType,
-        RangeReplaceableCollectionType,
-        ArrayLiteralConvertible
-    {}
-#endif
 
 extension Store {
     func reduce<T>(_ action: RouteAction<T>, route: Route) -> Route {
@@ -105,18 +96,13 @@ extension Route {
 
 
 extension Route {
-    #if swift(>=3)
+    
     public typealias Iterator = AnyIterator<String>
     public func makeIterator() -> Iterator {
         return AnyIterator(makeGenerator())
     }
-    #else
-    public typealias Generator = AnyGenerator<String>
-    public func generate() -> Generator {
-        return AnyGenerator(body: makeGenerator())
-    }
-    #endif
-
+    
+    
     func makeGenerator() -> () -> (String?) {
         var index = 0
         return {
@@ -124,7 +110,7 @@ extension Route {
                 let c = self.components[index]
                 index += 1
                 return c
-
+                
             }
             return nil
         }
