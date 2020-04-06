@@ -15,9 +15,6 @@ import Cordux
 
 final class AppCoordinator: SceneCoordinator, SubscriberType {
     
-    var rootViewController: UIViewController = UIViewController()
-    
-    
     enum RouteSegment: String, RouteConvertible {
         case login
         case mainTabBar
@@ -27,10 +24,9 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
     var scenePrefix: String = RouteSegment.login.rawValue
 
     let store: Store<AppState>
-    //let rootBackgroundController: BackgroundContainerViewController
-
     var currentScene: AnyCoordinator?
-
+    let rootBackgroundController: BackgroundContainerViewController
+    
     //var provider: ProviderType!
     //var session: SessionType = Session()
     
@@ -40,12 +36,13 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
 
     weak var windowCoordinator: WindowCoordinator?
     
-//    var rootViewController: UIViewController {
-//        return UIViewController()
-//    }
+    var rootViewController: UIViewController {
+        return rootBackgroundController
+    }
 
-    init(store: Store<AppState>) {
+    init(store: Store<AppState>, container: BackgroundContainerViewController) {
         self.store = store
+        self.rootBackgroundController = container
     }
 
     //MARK:- START

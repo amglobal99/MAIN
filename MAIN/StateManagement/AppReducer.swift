@@ -40,20 +40,8 @@ struct AppReducer: Reducer {
 
     func handleAction(_ action: Action, state: AppState) -> AppState {
         
-//        if let printable = action as? ActionLogPrintable {
-//            switch printable.logLevel {
-//            case .none: break
-//            case .actionName: globalLogger?.debug("Handling action: \(type(of:action)).\(action.shortName)")
-//            case .actionDetails: globalLogger?.debug("Handling action: \(type(of:action)).\(action)")
-//            }
-//        } else {
-//            #if targetEnvironment(simulator)
-//            globalLogger?.debug("Handling action: \(type(of:action)).\(action.shortName).\(action)")
-//            #else
-//            globalLogger?.debug("Handling action: \(type(of:action)).\(action.shortName)")
-//            #endif
-//        }
-
+        print("Handling action: \(type(of:action)).\(action.shortName)")
+        
         let (intialization, route) = initializationReducer(action, state: state.initialization, route: state.route)
         
         return AppState(route: route,
@@ -62,6 +50,9 @@ struct AppReducer: Reducer {
                         connectionState: connectionReducer(action, state: state.connectionState))
     }
 }
+
+
+
 
 //MARK: - Windows Reducer
 
@@ -75,28 +66,27 @@ func windowsReducer(_ action: Action, state: WindowState) -> WindowState {
     case .setKeyWindow(let kind):
         return WindowState(keyWindow: kind,
                            mainWindowVisible: state.mainWindowVisible,
-                           v2vrWindowVisible: state.v2vrWindowVisible,
                            lunchWindowVisible: state.lunchWindowVisible)
     case .setWindowVisible(let kind, let visible):
         switch kind {
         case .main:
             return WindowState(keyWindow: state.keyWindow,
                                mainWindowVisible: visible,
-                               v2vrWindowVisible: state.v2vrWindowVisible,
                                lunchWindowVisible: state.lunchWindowVisible)
         case .lunch:
             return WindowState(keyWindow: state.keyWindow,
                                mainWindowVisible: state.mainWindowVisible,
-                               v2vrWindowVisible: state.v2vrWindowVisible,
                                lunchWindowVisible: visible)
         }
     }
 }
 
+
+
 //MARK: - Connection Reducer
 
-func connectionReducer(_ action: Action, state: ConnectionState) -> ConnectionState {
-    guard let connectionAction = action as? ConnectionAction,
+func connectionReducer(_ action: Action, state: ConnectionStateKind) -> ConnectionStateKind {
+    guard let connectionAction = action as? ConnectionActionKind,
         case let .updateConnectionStatus(newStatus) = connectionAction else {
         return state
     }
@@ -112,7 +102,7 @@ func connectionReducer(_ action: Action, state: ConnectionState) -> ConnectionSt
 
 
 
-func initializationReducer(_ action: Action, state: Initialization, route: Cordux.Route) -> (Initialization, Cordux.Route) {
+func initializationReducer(_ action: Action, state: InitializationKind, route: Cordux.Route) -> (InitializationKind, Cordux.Route) {
     switch (action, state) {
 //    case let (action as InitialDownloadAction, _):
 //        return initialDownloadActionReducer(action, state: state, route: route)

@@ -6,50 +6,36 @@
 //  Copyright © 2020 Natsys. All rights reserved.
 //
 
-
-
 import Foundation
 import Cordux
-//import CBL
+
+//MARK:- Enums
 
 public enum RemoteServerAccessibilityStatus {
     case accessible
     case notAccessible
 }
 
-
-
-struct RouteSubscription {
-    let route: Cordux.Route
-
-    init(_ state: AppState) {
-        route = state.route
-    }
-}
-
-
-
-enum ConnectionState {
+enum ConnectionStateKind {
     case uninitialized
     case initialized(RemoteServerAccessibilityStatus)
 }
 
-enum ConnectionAction: Action {
+enum ConnectionActionKind: Action {
     case updateConnectionStatus(RemoteServerAccessibilityStatus)
 }
-
 
 enum WindowAction: Action {
     case setKeyWindow(WindowKind)
     case setWindowVisible(WindowKind, Bool)
 }
 
-enum Initialization {
+enum InitializationKind {
     case uninitialized
-    case initialized(Authentication)
+    case initialized(AuthenticationKind)
 }
 
-enum Authentication {
+enum AuthenticationKind {
     case authenticated
     case unauthenticated
 }
@@ -62,30 +48,25 @@ enum LoadingState<T> {
 }
 
 
+//MARK:- Route Subscription
 
+struct RouteSubscription {
+    let route: Cordux.Route
 
-struct WindowState {
-    
-    let keyWindow:  WindowKind
-    let mainWindowVisible: Bool
-    let v2vrWindowVisible: Bool
-    let lunchWindowVisible: Bool
-    
-    init(keyWindow: WindowKind,
-         mainWindowVisible: Bool = true,
-         v2vrWindowVisible: Bool = false,
-         lunchWindowVisible: Bool = false) {
-        
-        self.keyWindow = keyWindow
-        self.mainWindowVisible = mainWindowVisible
-        self.v2vrWindowVisible = v2vrWindowVisible
-        self.lunchWindowVisible = lunchWindowVisible
+    init(_ state: AppState) {
+        route = state.route
     }
 }
 
 
+//MARK:- ********* APP STATE **************
 
-
+/// THis is the struct that hold info about app State.
+/// Note: The AppState contains 4 elements
+/// - Route
+/// - InitializationKind
+/// - WindowState
+/// - ConnectionState
 
 struct AppState: StateType {
     
@@ -94,15 +75,17 @@ struct AppState: StateType {
             print("Current Route: \(route)")
         }
     }
-    var initialization: Initialization = .uninitialized
-
+    var initialization: InitializationKind = .uninitialized
     var windowState: WindowState
-    var connectionState: ConnectionState
+    var connectionState: ConnectionStateKind
     
+    /// This initializer is called from following locations:
+    /// 1. init() function in WindowCoordinator.swift
+    /// 2.  handleAction() function in AppReducer.swift
     init(route: Cordux.Route = [],
-         initialization: Initialization = .uninitialized,
+         initialization: InitializationKind = .uninitialized,
          windowState: WindowState,
-         connectionState: ConnectionState) {
+         connectionState: ConnectionStateKind) {
         self.route = route
         self.initialization = initialization
         self.windowState = windowState
