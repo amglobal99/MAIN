@@ -30,9 +30,10 @@ extension BrowsingState {
 
 
 
+    
+
 
 }
-
 
 
 
@@ -45,9 +46,8 @@ func browsingStateActionReducer(_ action: Action, state: BrowsingState, route: C
     return (.initialized(.authenticated(browsingState)), route)
 }
 
+
+
 */
-
-
-
 
 

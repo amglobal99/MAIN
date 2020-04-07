@@ -47,7 +47,9 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
 
     //MARK:- START
     
+    /// Called from the 'start() function in WindowCoordinartor.swift
     func start(route: Cordux.Route) {
+        print("App Coordinator: start()")
         store.subscribe(self, RouteSubscription.init)
         setupLocationManager()
         changeScene(route)
@@ -64,6 +66,10 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
     //MARK:- CHANGE SCENE
     
     func changeScene(_ route: Cordux.Route) {
+        print("App Coordinator: changeScene() ...")
+        
+        //FIXME:- fix this
+        
         guard let segment = RouteSegment(rawValue: route.first ?? "") else {
             return
         }
@@ -83,7 +89,7 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
         }
 
         scenePrefix = segment.rawValue
-
+                                                                                                                                                                                                                                                                                                                
         
         coordinator = WindowCoordinator()
         coordinator.start(route: sceneRoute(route))

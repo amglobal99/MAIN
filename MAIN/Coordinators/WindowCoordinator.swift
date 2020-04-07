@@ -1,10 +1,10 @@
-//
-//  WindowCoordinator.swift
-//  MAIN
-//
-//  Created by amglobal on 4/4/20.
-//  Copyright © 2020 Natsys. All rights reserved.
-//
+///
+///  WindowCoordinator.swift
+///  MAIN
+///
+///  Created by amglobal on 4/4/20.
+///  Copyright © 2020 Natsys. All rights reserved.
+///
 
 import UIKit
 import Cordux
@@ -12,18 +12,17 @@ import Cordux
 //MARK:- Protocols
 
 protocol WindowModelType {
-    var isHidden: Bool { get }
+    //var isHidden: Bool { get }
 }
 
 protocol WindowGroupModelType {
     var mainWindow: WindowModelType { get }
-    var lunchWindow: WindowModelType { get }
     var keyWindow: WindowKind { get }
 }
 
 enum WindowKind {
     case main
-    case lunch
+    // case lunch /// Use for second window
 }
 
 //MARK:- Window Model
@@ -36,7 +35,6 @@ struct WindowModel: WindowModelType {
 
 struct WindowGroupModel: WindowGroupModelType {
     let mainWindow: WindowModelType
-    let lunchWindow: WindowModelType
     let keyWindow: WindowKind
 }
 
@@ -48,7 +46,6 @@ extension WindowGroupModel {
         return { (state) -> WindowGroupModelType in
             return WindowGroupModel(
                 mainWindow: WindowModel(isHidden: !state.windowState.mainWindowVisible),
-                lunchWindow: WindowModel(isHidden: !state.windowState.lunchWindowVisible),
                 keyWindow: state.windowState.keyWindow
             )
         }
@@ -78,7 +75,6 @@ fileprivate extension UIWindow.Level {
 class WindowCoordinator: Coordinator, Renderer {
     
     let mainWindow: UIWindow
-    let lunchWindow: UIWindow
     let store: Store<AppState>
     var coordinatorForMainWindow: AppCoordinator
     
@@ -95,6 +91,8 @@ class WindowCoordinator: Coordinator, Renderer {
         return mainWindow.rootViewController!
     }
 
+    
+    
     /// This initializer is called from the 'application(_ application: UIApplication, didFinishLaunchingWithOptions' function
     /// in AppDelegate.swift
     init() {
@@ -113,15 +111,16 @@ class WindowCoordinator: Coordinator, Renderer {
         coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
         
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
-        lunchWindow = UIWindow(frame: UIScreen.main.bounds)
+        //  lunchWindow = UIWindow(frame: UIScreen.main.bounds)
         
         setupMainWindow()
-        
         coordinatorForMainWindow.windowCoordinator = self
         
         /// subscribe to store
         store.subscribe(self, WindowGroupModel.make())
     }
+    
+    
     
     private func setupMainWindow() {
         mainWindow.rootViewController = coordinatorForMainWindow.rootViewController
@@ -132,7 +131,9 @@ class WindowCoordinator: Coordinator, Renderer {
     
     //MARK:- START
     
+    /// called from ' func application(_ application: UIApplication, didFinishLaunchingWithOptions ....' function in AppDelegate.swift
     func start(route: Cordux.Route) {
+        print("Window Coordinator: start()")
         coordinatorForMainWindow.start(route: store.state.route)
     }
 
@@ -140,11 +141,8 @@ class WindowCoordinator: Coordinator, Renderer {
     //MARK:- RENDER
     
     func render(_ viewModel: WindowGroupModel) {
-        lunchWindow.isHidden = viewModel.lunchWindow.isHidden
-        mainWindow.isHidden = viewModel.mainWindow.isHidden
+        //mainWindow.isHidden = viewModel.mainWindow.isHidden
         switch viewModel.keyWindow {
-        case .lunch where !lunchWindow.isKeyWindow:
-            lunchWindow.makeKey()
         case .main where !mainWindow.isKeyWindow:
             /// Use this method to make the window key without changing its visibility.
             /// The key window receives keyboard and other non-touch related events.
