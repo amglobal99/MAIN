@@ -14,15 +14,11 @@ struct WindowState {
     
     let keyWindow:  WindowKind
     let mainWindowVisible: Bool
-    let lunchWindowVisible: Bool
     
     init(keyWindow: WindowKind,
-         mainWindowVisible: Bool = true,
-         lunchWindowVisible: Bool = false) {
-        
+         mainWindowVisible: Bool = true) {
         self.keyWindow = keyWindow
         self.mainWindowVisible = mainWindowVisible
-        self.lunchWindowVisible = lunchWindowVisible
     }
 }
 

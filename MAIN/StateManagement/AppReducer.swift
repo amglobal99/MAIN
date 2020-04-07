@@ -222,18 +222,12 @@ func windowsReducer(_ action: Action, state: WindowState) -> WindowState {
     switch windowAction {
     case .setKeyWindow(let kind):
         return WindowState(keyWindow: kind,
-                           mainWindowVisible: state.mainWindowVisible,
-                           lunchWindowVisible: state.lunchWindowVisible)
+                           mainWindowVisible: state.mainWindowVisible)
     case .setWindowVisible(let kind, let visible):
         switch kind {
         case .main:
             return WindowState(keyWindow: state.keyWindow,
-                               mainWindowVisible: visible,
-                               lunchWindowVisible: state.lunchWindowVisible)
-        case .lunch:
-            return WindowState(keyWindow: state.keyWindow,
-                               mainWindowVisible: state.mainWindowVisible,
-                               lunchWindowVisible: visible)
+                               mainWindowVisible: visible)
         }
     }
 }

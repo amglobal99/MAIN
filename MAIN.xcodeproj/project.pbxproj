@@ -29,6 +29,7 @@
 		A6907B7A2437E67000C11BA9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6907B782437E67000C11BA9 /* Main.storyboard */; };
 		A6907B7C2437E67100C11BA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6907B7B2437E67100C11BA9 /* Assets.xcassets */; };
 		A6907B7F2437E67100C11BA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6907B7D2437E67100C11BA9 /* LaunchScreen.storyboard */; };
+		A6CEB28E243CA96E00DBA3F9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +59,7 @@
 		A6907B7B2437E67100C11BA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6907B7E2437E67100C11BA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6907B802437E67100C11BA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 				A6240F7624393B300053BDDD /* WindowCoordinator.swift */,
 				A6240F7E243A67C50053BDDD /* MockCoordinator.swift */,
 				A6240F80243A682E0053BDDD /* AppCoordinator.swift */,
+				A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -317,6 +320,7 @@
 				A6430293243BA00B00204849 /* Formatters.swift in Sources */,
 				A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */,
 				A663CA7F243BD76400EA9709 /* BrowsingState.swift in Sources */,
+				A6CEB28E243CA96E00DBA3F9 /* LoginCoordinator.swift in Sources */,
 				A663CA7D243BD17900EA9709 /* LoginState.swift in Sources */,
 				A6240F81243A682E0053BDDD /* AppCoordinator.swift in Sources */,
 				A6240F7724393B300053BDDD /* WindowCoordinator.swift in Sources */,
