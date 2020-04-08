@@ -30,6 +30,7 @@
 		A6907B7C2437E67100C11BA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6907B7B2437E67100C11BA9 /* Assets.xcassets */; };
 		A6907B7F2437E67100C11BA9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6907B7D2437E67100C11BA9 /* LaunchScreen.storyboard */; };
 		A6CEB28E243CA96E00DBA3F9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */; };
+		A6EF28A6243E2B2900098577 /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF28A5243E2B2900098577 /* MainTabCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +61,7 @@
 		A6907B7E2437E67100C11BA9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6907B802437E67100C11BA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
+		A6EF28A5243E2B2900098577 /* MainTabCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				A6240F7E243A67C50053BDDD /* MockCoordinator.swift */,
 				A6240F80243A682E0053BDDD /* AppCoordinator.swift */,
 				A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */,
+				A6EF28A5243E2B2900098577 /* MainTabCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				A6240F7724393B300053BDDD /* WindowCoordinator.swift in Sources */,
 				A6240F7F243A67C50053BDDD /* MockCoordinator.swift in Sources */,
 				A6430288243B9D8000204849 /* ExtensionString.swift in Sources */,
+				A6EF28A6243E2B2900098577 /* MainTabCoordinator.swift in Sources */,
 				A6240F84243A88B30053BDDD /* BackgroundContainerViewController.swift in Sources */,
 				A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */,
 				A643028B243B9DF300204849 /* GlobalConstants.swift in Sources */,
