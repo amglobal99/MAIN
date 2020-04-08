@@ -71,6 +71,7 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
         //FIXME:- fix this
         
         guard let segment = RouteSegment(rawValue: route.first ?? "") else {
+            print("App Coordinator: segment is nil. EXITING")
             return
         }
 

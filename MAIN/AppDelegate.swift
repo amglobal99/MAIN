@@ -87,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     
-    
+    /*
     
     func changeEnvironmentAndExit(_ env: EnvironmentKind) {
         if let _ = window?.rootViewController?.presentedViewController {
@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
  
  
- 
+ */
  
  
  
