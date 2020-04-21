@@ -8,13 +8,19 @@
 
 import Foundation
 
+//MARK:- ********* Route Struct *********
+
 public struct Route  {
     var components: [String]
 }
 
+//MARK:-
+
 public protocol RouteConvertible {
     func route() -> Route
 }
+
+//MARK:-
 
 public enum RouteAction<T: RouteConvertible>: Action {
     case goto(T)
@@ -23,16 +29,14 @@ public enum RouteAction<T: RouteConvertible>: Action {
     case replace(T, T)
 }
 
+//MARK:-
 
-extension Route:
-    RandomAccessCollection,
-    Sequence,
-    RangeReplaceableCollection,
-    ExpressibleByArrayLiteral
-{}
+extension Route: RandomAccessCollection, Sequence, RangeReplaceableCollection, ExpressibleByArrayLiteral {}
 
+//MARK:- Reducer
 
 extension Store {
+    
     func reduce<T>(_ action: RouteAction<T>, route: Route) -> Route {
         switch action {
         case .goto(let route):
@@ -56,7 +60,10 @@ extension Store {
             return reduce(.push(new), route: head)
         }
     }
-}
+    
+}//end extension
+
+//MARK:- Initializers
 
 extension Route {
     public init() {
@@ -76,11 +83,14 @@ extension Route {
     }
 }
 
+//MARK:- Equatable
+
 extension Route: Equatable {}
 
 public func ==(lhs: Route, rhs: Route) -> Bool {
     return lhs.components == rhs.components
 }
+
 
 extension Route: RouteConvertible {
     public func route() -> Route {
@@ -88,21 +98,24 @@ extension Route: RouteConvertible {
     }
 }
 
+//MARK:- ExpressibleByArrayLiteral
+
 extension Route {
     public init(arrayLiteral elements: String...) {
         components = elements
     }
 }
 
+//MARK:-
 
 extension Route {
     
     public typealias Iterator = AnyIterator<String>
+    
     public func makeIterator() -> Iterator {
         return AnyIterator(makeGenerator())
     }
-    
-    
+
     func makeGenerator() -> () -> (String?) {
         var index = 0
         return {
@@ -117,13 +130,13 @@ extension Route {
     }
 }
 
+//MARK:-
+
 extension Route {
     public typealias Index = Int
 
-    #if swift(>=3)
-        public typealias Indices = CountableRange<Index>
-    #endif
-
+    public typealias Indices = CountableRange<Index>
+    
     public var startIndex: Int {
         return 0
     }
@@ -150,7 +163,6 @@ extension Route {
         components.reserveCapacity(minimumCapacity)
     }
 
-  
     public mutating func replaceSubrange<C : Collection>(_ subRange: Range<Int>, with newElements: C) where C.Iterator.Element == Iterator.Element {
         components.replaceSubrange(subRange, with: newElements)
     }
@@ -169,14 +181,22 @@ public func +(lhs: Route, rhs: RouteConvertible) -> Route {
     return Route(lhs.components + rhs.route().components)
 }
 
+//MARK:- RouteConvertible
+
 extension String: RouteConvertible {
+    
     public func route() -> Route {
         return Route(self)
     }
+    
 }
 
+//MARK:- RawRepresentable
+
 public extension RawRepresentable where RawValue == String {
+    
     func route() -> Route {
         return self.rawValue.route()
     }
+    
 }
