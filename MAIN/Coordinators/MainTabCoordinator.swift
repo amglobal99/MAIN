@@ -10,7 +10,9 @@ import Foundation
 import Cordux
 //import CBL
 
+
 class MainTabCoordinator: NSObject, TabBarControllerCoordinator {
+    
     let store: Store<AppState>
    // let provider: ProviderType
    // let session: SessionType
@@ -18,11 +20,10 @@ class MainTabCoordinator: NSObject, TabBarControllerCoordinator {
     let tabBarController: UITabBarController = UITabBarController()
     var isProductionEnv: Bool = true
     
-    
+    /// This initializer is called from the 'chnageScene' function in AppCoordinator.swift.
     init(store: Store<AppState>) {
         self.store = store
         scenes = [
-           Scene(prefix: "main", coordinator: MainTabCoordinator(store: store)),
            Scene(prefix: "more", coordinator: MoreCoordinator(store: store))
         ]
         super.init()
@@ -41,37 +42,24 @@ class MainTabCoordinator: NSObject, TabBarControllerCoordinator {
     }
 }//end coordinator
 
-
-
-
-
-
-
+//MARK:- ************** NEW STATE *******************
 
 extension MainTabCoordinator: SubscriberType {
     
     func newState(_ state: AppState) {
-//        if case .initialized(let status) = state.connectionState {
-//            if case .notAccessible = status,
-//                let item = tabBarController.tabBar.items?[3] {
-//                item.badgeValue = "!"
-//                if #available(iOS 10.0, *) {
-//                    item.badgeColor = Theme.Colors.coralColor()
-//                }
-//            } else if let item = tabBarController.tabBar.items?[3] {
-//                item.badgeValue = nil
-//            }
-//        }
+       /// This will be executed any time an action is sent to store.
+       /// update any variable value here if you need to
     }
 }
+
+//MARK:-  ******* Tab Controller Delegaet ************
 
 extension MainTabCoordinator: UITabBarControllerDelegate {
     
     func tabBarController(_ tabBarController: UITabBarController, shouldSelect viewController: UIViewController) -> Bool {
         // If the user just selected the tab they're currently on
         // we want to avoid popping back to the root view controller
-        if let rootViewController = currentScene?.rootViewController,
-            rootViewController == viewController {
+        if let rootViewController = currentScene?.rootViewController, rootViewController == viewController {
             return false
         }
         return setRouteForViewController(viewController)
