@@ -72,7 +72,7 @@ fileprivate extension UIWindow.Level {
 
 
 
-//MARK:- COORDINATOR
+//MARK:- *********** COORDINATOR ***************
 
 class WindowCoordinator: Coordinator, Renderer {
     
@@ -95,9 +95,7 @@ class WindowCoordinator: Coordinator, Renderer {
 
     
     
-    
-    
-    
+    //MARK:- Initializer
     
     /// This initializer is called from the 'application(_ application: UIApplication, didFinishLaunchingWithOptions' function
     /// in AppDelegate.swift
@@ -110,13 +108,7 @@ class WindowCoordinator: Coordinator, Renderer {
         store = Store(initialState: state, reducer: AppReducer())
         /// build the background container view controller
         
-        
-      //  let temp = UIViewController()
-      //  temp.view.layer.backgroundColor =  UIColor.brown.cgColor
-        
-        
         let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
-        // let mainViewController = BackgroundContainerViewController.build(withChild: temp)
         
         /// assign coordinator for main window
         coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
@@ -130,16 +122,7 @@ class WindowCoordinator: Coordinator, Renderer {
         store.subscribe(self, WindowGroupModel.make())
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
     //MARK:- Setup Main Window
-    
     
     private func setupMainWindow() {
         /// set the root controller to b ethe background comntainer view controller
@@ -149,9 +132,7 @@ class WindowCoordinator: Coordinator, Renderer {
     }
 
     
-    
-    
-    //MARK:- START
+    //MARK:- ************ START **************
     
     /// called from ' func application(_ application: UIApplication, didFinishLaunchingWithOptions ....' function in AppDelegate.swift
     func start(route: Cordux.Route) {
@@ -159,8 +140,7 @@ class WindowCoordinator: Coordinator, Renderer {
         coordinatorForMainWindow.start(route: store.state.route)
     }
 
-
-    //MARK:- RENDER
+    //MARK:- ********** RENDER ***************
     
     func render(_ viewModel: WindowGroupModel) {
         print("Window Coordinator: RENDER() ...")
@@ -180,4 +160,3 @@ class WindowCoordinator: Coordinator, Renderer {
     }
     
 }//end class
-

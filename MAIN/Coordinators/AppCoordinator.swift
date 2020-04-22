@@ -9,9 +9,8 @@
 
 import UIKit
 import Cordux
-//import CBL
 
-//typealias DatabaseManagerSetupCompletion = (_ provider: ProviderType)->()
+//MARK:- *********** COORDINATOR *************
 
 final class AppCoordinator: SceneCoordinator, SubscriberType {
     
@@ -31,13 +30,6 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
         return rootBackgroundController
     }
     
-    //var provider: ProviderType!
-    //var session: SessionType = Session()
-    //var vehicletoVehicleConnection: VehicletoVehicleConnectionType = globalEnableV2VR ?  VehicletoVehicleConnection() : MockVehicletoVehicleConnection()
-    //var userLocationManager: UserLocationManagerType!
-
-    
-
     /// Called from init() function in WindowCoordinator.swift
     init(store: Store<AppState>, container: BackgroundContainerViewController) {
         self.store = store
@@ -50,7 +42,7 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
     func start(route: Cordux.Route) {
         print("App Coordinator: start()")
         store.subscribe(self, RouteSubscription.init)
-        setupLocationManager()
+        //setupLocationManager()
         changeScene(route)
     }
 
@@ -64,48 +56,50 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
 
     //MARK:-
     
-    func setupLocationManager() {
-       // userLocationManager = UserLocationManager(store: store, rootViewController: rootViewController)
-    }
+//    func setupLocationManager() {
+//       // userLocationManager = UserLocationManager(store: store, rootViewController: rootViewController)
+//    }
 
+    
+    
+    
+    //FIXME:- THIS NEEDS TO BE FIXED
+    
+    
     //MARK:- CHANGE SCENE
     
     func changeScene(_ route: Cordux.Route) {
-        print("App Coordinator: changeScene() ...")
-        
-        //FIXME:- fix this
-        
-        let rt: Cordux.Route = ["mainTabBar","more"]
-        
+        print("App Coordinator: changeScene() ... segment: \(String(describing: RouteSegment(rawValue: route.first ?? "")))")
         
 //        guard let segment = RouteSegment(rawValue: route.first ?? "") else {
 //            print("App Coordinator: segment is nil. EXITING")
 //            return
 //        }
 
+        let rt: Cordux.Route = ["mainTabBar"]
+        
+        
         guard let segment = RouteSegment(rawValue: rt.first ?? "") else {
             print("App Coordinator: segment is nil. EXITING")
             return
         }
         
-        
-        
-        
-        var coordinator: AnyCoordinator = WindowCoordinator()
-        
+        var coordinator: AnyCoordinator
+    
         switch segment {
         case .login:
             print("AppCoordinator: this is login")
+            coordinator = MoreCoordinator(store: store)
         case .mainTabBar:
             print("AppCoordinator: this is mainTAbBar")
-            //  coordinator = MainTabCoordinator(store: store, provider: provider, session: session, v2vConnection: vehicletoVehicleConnection)
-            //coordinator = MainTabCoordinator(store: store)
-            coordinator = MoreCoordinator(store: store)
-            
+            coordinator = MainTabCoordinator(store: store)
+            //coordinator = MoreCoordinator(store: store)
         case .debug:
             print("AppCoordinator: this isDebug")
+            coordinator = MoreCoordinator(store: store)
         case .crashReporter:
             print("AppCoordinator: this is Crash")
+            coordinator = MoreCoordinator(store: store)
         }
         
         scenePrefix = segment.rawValue
