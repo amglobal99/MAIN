@@ -44,11 +44,10 @@ class MoreViewController: UIViewController {
     class func build() -> MoreViewController {
         let storyboard = UIStoryboard(name: "MoreViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
-        
-        vc.tabBarItem.title = NSLocalizedString("MainTabBarController.MoreTabBarItem.Title", comment: "")
+        vc.tabBarItem.title = "More Tab"
         vc.tabBarItem.image = UIImage(named: "icoMore")
         vc.tabBarItem.selectedImage = UIImage(named: "icoMoreSelected")
-        vc.title = NSLocalizedString("MainTabBarController.MoreTabBarItem.Title", comment: "")
+        vc.title = "MORE OPTIONS"
         vc.view.backgroundColor = Theme.Colors.backgroundGreyColor()
         return vc
     }

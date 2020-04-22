@@ -63,7 +63,7 @@ extension Store {
     
 }//end extension
 
-//MARK:- Initializers
+//MARK:- ******* Initializers ************
 
 extension Route {
     public init() {
@@ -181,7 +181,7 @@ public func +(lhs: Route, rhs: RouteConvertible) -> Route {
     return Route(lhs.components + rhs.route().components)
 }
 
-//MARK:- RouteConvertible
+//MARK:- Convert String to Route
 
 extension String: RouteConvertible {
     

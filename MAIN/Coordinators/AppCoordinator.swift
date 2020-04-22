@@ -22,30 +22,29 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
         case crashReporter
     }
     var scenePrefix: String = RouteSegment.login.rawValue
-
     let store: Store<AppState>
     var currentScene: AnyCoordinator?
     let rootBackgroundController: BackgroundContainerViewController
-    
-    //var provider: ProviderType!
-    //var session: SessionType = Session()
-    
-    //var vehicletoVehicleConnection: VehicletoVehicleConnectionType = globalEnableV2VR ?  VehicletoVehicleConnection() : MockVehicletoVehicleConnection()
-
-    //var userLocationManager: UserLocationManagerType!
-
     weak var windowCoordinator: WindowCoordinator?
     
     var rootViewController: UIViewController {
         return rootBackgroundController
     }
+    
+    //var provider: ProviderType!
+    //var session: SessionType = Session()
+    //var vehicletoVehicleConnection: VehicletoVehicleConnectionType = globalEnableV2VR ?  VehicletoVehicleConnection() : MockVehicletoVehicleConnection()
+    //var userLocationManager: UserLocationManagerType!
 
+    
+
+    /// Called from init() function in WindowCoordinator.swift
     init(store: Store<AppState>, container: BackgroundContainerViewController) {
         self.store = store
         self.rootBackgroundController = container
     }
 
-    //MARK:- START
+    //MARK:- ******* START *******
     
     /// Called from the 'start() function in WindowCoordinartor.swift
     func start(route: Cordux.Route) {
@@ -55,10 +54,16 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
         changeScene(route)
     }
 
+    //MARK:-
+    
+    //MARK:- ****** NEW STATE ********
+    
     func newState(_ state: RouteSubscription) {
         self.route = state.route
     }
 
+    //MARK:-
+    
     func setupLocationManager() {
        // userLocationManager = UserLocationManager(store: store, rootViewController: rootViewController)
     }
@@ -70,32 +75,43 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
         
         //FIXME:- fix this
         
-        guard let segment = RouteSegment(rawValue: route.first ?? "") else {
+        let rt: Cordux.Route = ["mainTabBar","more"]
+        
+        
+//        guard let segment = RouteSegment(rawValue: route.first ?? "") else {
+//            print("App Coordinator: segment is nil. EXITING")
+//            return
+//        }
+
+        guard let segment = RouteSegment(rawValue: rt.first ?? "") else {
             print("App Coordinator: segment is nil. EXITING")
             return
         }
-
-        let coordinator: AnyCoordinator
+        
+        
+        
+        
+        var coordinator: AnyCoordinator = WindowCoordinator()
         
         switch segment {
         case .login:
             print("AppCoordinator: this is login")
         case .mainTabBar:
-           print("AppCoordinator: this is mainTAbBar")
-          //  coordinator = MainTabCoordinator(store: store, provider: provider, session: session, v2vConnection: vehicletoVehicleConnection)
+            print("AppCoordinator: this is mainTAbBar")
+            //  coordinator = MainTabCoordinator(store: store, provider: provider, session: session, v2vConnection: vehicletoVehicleConnection)
+            //coordinator = MainTabCoordinator(store: store)
+            coordinator = MoreCoordinator(store: store)
+            
         case .debug:
             print("AppCoordinator: this isDebug")
         case .crashReporter:
             print("AppCoordinator: this is Crash")
         }
-
-        scenePrefix = segment.rawValue
-                                                                                                                                                                                                                                                                                                                
         
-        coordinator = WindowCoordinator()
-        coordinator.start(route: sceneRoute(route))
+        scenePrefix = segment.rawValue
+        coordinator.start(route: sceneRoute(rt))
         currentScene = coordinator
-       // rootBackgroundController.replaceCurrentChildViewController(withViewController: coordinator.rootViewController)
+        rootBackgroundController.replaceCurrentChildViewController(withViewController: coordinator.rootViewController)
     }
 }
 

@@ -25,11 +25,13 @@ enum WindowKind {
     // case lunch /// Use for second window
 }
 
+
 //MARK:- Window Model
 
 struct WindowModel: WindowModelType {
     let isHidden: Bool
 }
+
 
 //MARK:- Window Group Model
 
@@ -93,41 +95,61 @@ class WindowCoordinator: Coordinator, Renderer {
 
     
     
+    
+    
+    
+    
     /// This initializer is called from the 'application(_ application: UIApplication, didFinishLaunchingWithOptions' function
     /// in AppDelegate.swift
     init() {
         /// create Window State
         let windowState = WindowState(keyWindow: .main)
-        
         /// create App State
         let state = AppState(windowState: windowState, connectionState: .uninitialized)
-        
         /// create store
         store = Store(initialState: state, reducer: AppReducer())
+        /// build the background container view controller
+        
+        
+      //  let temp = UIViewController()
+      //  temp.view.layer.backgroundColor =  UIColor.brown.cgColor
+        
         
         let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
+        // let mainViewController = BackgroundContainerViewController.build(withChild: temp)
         
         /// assign coordinator for main window
         coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
         
+        /// set up the main window
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
-        //  lunchWindow = UIWindow(frame: UIScreen.main.bounds)
-        
         setupMainWindow()
+        /// set the window coordinator for AppCoordinator
         coordinatorForMainWindow.windowCoordinator = self
-        
         /// subscribe to store
         store.subscribe(self, WindowGroupModel.make())
     }
     
     
     
+    
+    
+    
+    
+    
+    
+    //MARK:- Setup Main Window
+    
+    
     private func setupMainWindow() {
+        /// set the root controller to b ethe background comntainer view controller
         mainWindow.rootViewController = coordinatorForMainWindow.rootViewController
         mainWindow.tintColor = UIColor.gray
         mainWindow.windowLevel = UIWindow.Level.normal
     }
 
+    
+    
     
     //MARK:- START
     
@@ -141,15 +163,20 @@ class WindowCoordinator: Coordinator, Renderer {
     //MARK:- RENDER
     
     func render(_ viewModel: WindowGroupModel) {
-        //mainWindow.isHidden = viewModel.mainWindow.isHidden
-        switch viewModel.keyWindow {
-        case .main where !mainWindow.isKeyWindow:
-            /// Use this method to make the window key without changing its visibility.
-            /// The key window receives keyboard and other non-touch related events.
-            mainWindow.makeKey()
-        default:
-            break
-        }
+        print("Window Coordinator: RENDER() ...")
+        mainWindow.isHidden = false
+        mainWindow.makeKey()
+        
+        /// ***** THe below is used when you want to use two windows for your app *******
+        /// For example, in DS app, we had a lucnh window
+        //        switch viewModel.keyWindow {
+        //        case .main where !mainWindow.isKeyWindow:
+        //            /// Use this method to make the window key without changing its visibility.
+        //            /// The key window receives keyboard and other non-touch related events.
+        //            mainWindow.makeKey()
+        //        default:
+        //            break
+        //        }
     }
     
 }//end class

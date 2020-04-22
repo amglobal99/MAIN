@@ -21,28 +21,20 @@ class MainTabCoordinator: NSObject, TabBarControllerCoordinator {
     
     init(store: Store<AppState>) {
         self.store = store
-        
         scenes = [
-           // Scene(prefix: "more", coordinator: MoreCoordinator(store: store, provider: provider)),
+           Scene(prefix: "main", coordinator: MainTabCoordinator(store: store)),
+           Scene(prefix: "more", coordinator: MoreCoordinator(store: store))
         ]
-        
-        if !isProductionEnv {
-           // scenes.append(Scene(prefix: "debug", coordinator: DebugCoordinator(store: store, provider: provider)))
-        }
-        
         super.init()
         self.store.subscribe(self) { state in return state }
     }
 
-    
-    
-    
+    //MARK:- ********** START ***************
     
     func start(route: Cordux.Route) {
         tabBarController.delegate = self
         tabBarController.tabBar.tintColor = Theme.Colors.tealishColor()
         tabBarController.tabBar.isTranslucent = false
-        
         scenes.forEach { $0.coordinator.start(route: route) }
         tabBarController.viewControllers = scenes.map { $0.coordinator.rootViewController }
         store.setRoute(.push(scenes[tabBarController.selectedIndex]))

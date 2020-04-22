@@ -6,6 +6,8 @@
 //  Copyright © 2020 Natsys. All rights reserved.
 //
 
+
+/*
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -51,3 +53,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+
+ 
+ 
+ */
