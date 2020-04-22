@@ -21,11 +21,14 @@ class BackgroundContainerViewController: UIViewController {
     }
     
     // MARK: - Initializers
+    
+    /// Function builds the background container view controller
+    /// This function is called from the init() function in WindowCoordinator.swift
     class func build(withBackground background: Background = .color(.white), withChild childViewController: UIViewController) -> BackgroundContainerViewController {
         let storyboard = UIStoryboard(name: "BackgroundContainerViewController", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "BackgroundContainerViewController") as! BackgroundContainerViewController
-        vc.installBackground(background)
-        vc.replaceCurrentChildViewController(withViewController: childViewController)
+       // vc.installBackground(background)
+        // vc.replaceCurrentChildViewController(withViewController: childViewController)
         return vc
     }
     
@@ -34,19 +37,16 @@ class BackgroundContainerViewController: UIViewController {
     }
     
     fileprivate func installBackground(_ background: Background) {
+        
+        view.backgroundColor = UIColor.yellow
+        
         switch background {
         case .color(let color):
             view.backgroundColor = color
         case .view(let bgView):
             bgView.translatesAutoresizingMaskIntoConstraints = false
             view.addSubview(bgView)
-            
-            //FIXME:-  Jack
-            
-            
-          //  bgView.  constrainEdgeAnchorsToEdgeAnchors(of: view)  //TODO:  check this
-           // bgView
-            
+           // bgView.constrainEdgeAnchorsToEdgeAnchors(of: view)
         }
     }
 

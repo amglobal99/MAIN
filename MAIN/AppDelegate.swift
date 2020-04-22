@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UIViewController.swizzleLifecycleDelegatingViewControllerMethods()
+        /// Initialize Window Coordinator. The coordinator for main window is specified there (AppCoordinator)
         windowCoordinator = WindowCoordinator()
         windowCoordinator.start(route: Route())
         return true
@@ -123,7 +124,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
  
  
-}
+} //end class
 
 
 
