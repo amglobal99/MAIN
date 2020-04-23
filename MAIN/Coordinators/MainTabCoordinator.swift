@@ -24,7 +24,9 @@ class MainTabCoordinator: NSObject, TabBarControllerCoordinator {
     init(store: Store<AppState>) {
         self.store = store
         scenes = [
-           Scene(prefix: "more", coordinator: MoreCoordinator(store: store))
+           Scene(prefix: "more", coordinator: MoreCoordinator(store: store)),
+            Scene(prefix: "login", coordinator: LoginCoordinator(store: store)),
+            Scene(prefix: "clients ", coordinator: MoreCoordinator(store: store))
         ]
         super.init()
         self.store.subscribe(self) { state in return state }

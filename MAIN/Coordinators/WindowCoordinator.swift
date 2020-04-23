@@ -103,7 +103,14 @@ class WindowCoordinator: Coordinator, Renderer {
         /// create Window State
         let windowState = WindowState(keyWindow: .main)
         /// create App State
-        let state = AppState(windowState: windowState, connectionState: .uninitialized)
+        var state = AppState(windowState: windowState, connectionState: .uninitialized)
+        
+        /// set initial route segment in app state
+        
+        //TODO: .... check this section
+       // state.route = AppCoordinator.RouteSegment.login.route()
+        state.route = AppCoordinator.RouteSegment.mainTabBar.route()
+        
         /// create store
         store = Store(initialState: state, reducer: AppReducer())
         /// build the background container view controller
@@ -136,7 +143,7 @@ class WindowCoordinator: Coordinator, Renderer {
     
     /// called from ' func application(_ application: UIApplication, didFinishLaunchingWithOptions ....' function in AppDelegate.swift
     func start(route: Cordux.Route) {
-        print("Window Coordinator: start()")
+        print("Window Coordinator: start() .... Route value in app state: \(store.state.route)")
         coordinatorForMainWindow.start(route: store.state.route)
     }
 

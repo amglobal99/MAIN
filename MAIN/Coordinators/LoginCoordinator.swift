@@ -6,6 +6,103 @@
 //  Copyright © 2020 Natsys. All rights reserved.
 //
 
+import Foundation
+import Cordux
+
+
+//MARK: - Coordinator Class
+
+class LoginCoordinator: Coordinator {
+    
+    enum RouteSegment: String, RouteConvertible {
+        case lunchOut
+        case language
+    }
+    
+    let store: Store<AppState>
+    var route: Cordux.Route = []
+    
+   // var provider: ProviderType!
+   // var moreViewController: MoreViewController!
+    var presentedCoordinator: AnyCoordinator?
+    var _navigationController: UINavigationController!
+   // var lunchCoordinator: LunchCoordinator?
+    
+    var rootViewController: UIViewController {
+        return _navigationController
+    }
+
+    
+    //MARK: - User Preferences
+    
+//    var currentPreferences: [UserPreferenceKind] = []
+    var displayMapEnabled: Bool = true
+    var displayFeaturedNoteEnabled:  Bool = false
+    
+    //MARK: - Initializer
+    
+    init(store: Store<AppState>) {
+        self.store = store
+    }
+
+    //MARK: - Start
+    
+    func start(route: Cordux.Route) {
+        print("Login Coordinator: ***** START ******")
+        let loginViewController = LoginViewController.build()
+       // moreViewController.handler = self
+        loginViewController.corduxContext = Context(route, lifecycleDelegate: self)
+        
+        _navigationController = UINavigationController(rootViewController: loginViewController)
+        _navigationController.navigationBar.isTranslucent = false
+    }
+    
+    //MARK: - Push View Controller
+    
+    func push(_ coordinator: AnyCoordinator, route: Cordux.Route = []) {
+        self.presentedCoordinator = coordinator
+        coordinator.start(route: route)
+        _navigationController.pushViewController(coordinator.rootViewController, animated: true)
+    }
+}
+
+
+
+
+
+
+//MARK: - View Lifecycle Delegate
+
+extension LoginCoordinator: ViewControllerLifecycleDelegate {
+    
+    func viewWillAppear(_ viewController: UIViewController) {
+       // store.subscribe(viewController)
+    }
+    
+    func viewWillDisappear(_ viewController: UIViewController) {
+        
+      // store.unsubscribe(viewController)
+        
+    }
+}
+
+//MARK: - Handler for MoreViewController
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /*

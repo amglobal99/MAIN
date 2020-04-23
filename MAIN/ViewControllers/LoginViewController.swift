@@ -1,22 +1,20 @@
 //
-//  MoreViewController.swift
+//  LoginViewController.swift
 //  MAIN
 //
-//  Created by amglobal on 4/8/20.
+//  Created by amglobal on 4/23/20.
 //  Copyright © 2020 Natsys. All rights reserved.
 //
-
 
 import Foundation
 import UIKit
 import Cordux
-//import CBL
 
 
 
 //MARK: - Handler Protocol
 
-protocol MoreViewControllerHandler: class {
+protocol LoginViewControllerHandler: class {
     func logOut()
     func lunchOut()
    // func updateSwitchToggle(_ toggle: DeliveryDetailsSwitchItemType)
@@ -35,22 +33,21 @@ protocol MoreViewControllerHandler: class {
 ///     - RightDetailTableViewCell
 ///     - DeviceStatusTableViewCell
 ///     - SwitchItemTableViewCell
-class MoreViewController: UIViewController {
+class LoginViewController: UIViewController {
 
     weak var handler: MoreViewControllerHandler?
     
 
     // MARK: - Initial Setup
     
-    /// called from the start func in MoreCoordinator.swift
-    
-    class func build() -> MoreViewController {
-        let storyboard = UIStoryboard(name: "MoreViewController", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "MoreViewController") as! MoreViewController
-        vc.tabBarItem.title = "More Tab"
-        vc.tabBarItem.image = UIImage(named: "icoMore")
-        vc.tabBarItem.selectedImage = UIImage(named: "icoMoreSelected")
-        vc.title = "More"
+    /// called from the start func in LoginCoordinator.swift
+    class func build() -> LoginViewController {
+        let storyboard = UIStoryboard(name: "LoginViewController", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        vc.tabBarItem.title = "Login"
+        vc.tabBarItem.image = UIImage(named: "icoHelpSelected")
+        vc.tabBarItem.selectedImage = UIImage(named: "icoHelpSelected")
+        vc.title = "Login"
         vc.view.backgroundColor = Theme.Colors.backgroundGreyColor()
         return vc
     }
