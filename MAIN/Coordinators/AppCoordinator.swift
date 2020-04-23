@@ -38,9 +38,10 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
 
     //MARK:- ******* START *******
     
-    /// Called from the 'start() function in WindowCoordinartor.swift
+    /// Called from the 'start()' function in WindowCoordinartor.swift
+    ///
     func start(route: Cordux.Route) {
-        print("App Coordinator: start()")
+        print("App Coordinator: start()  .... route: \(route)")
         store.subscribe(self, RouteSubscription.init)
         //setupLocationManager()
         changeScene(route)
@@ -68,45 +69,38 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
     
     //MARK:- CHANGE SCENE
     
+    /// Function called from the 'start()' function in AppCoordinator.swift
     func changeScene(_ route: Cordux.Route) {
-        print("App Coordinator: changeScene() ... segment: \(String(describing: RouteSegment(rawValue: route.first ?? "")))")
-        
-//        guard let segment = RouteSegment(rawValue: route.first ?? "") else {
-//            print("App Coordinator: segment is nil. EXITING")
-//            return
-//        }
+            print("App Coordinator: changeScene() ... segment: \(String(describing: RouteSegment(rawValue: route.first ?? "")))")
+            guard let segment = RouteSegment(rawValue: route.first ?? "") else {
+                print("App Coordinator: segment is nil. EXITING")
+                return
+            }
 
-        let rt: Cordux.Route = ["mainTabBar"]
+            var coordinator: AnyCoordinator
         
-        
-        guard let segment = RouteSegment(rawValue: rt.first ?? "") else {
-            print("App Coordinator: segment is nil. EXITING")
-            return
+            switch segment {
+            case .login:
+                print("AppCoordinator: this is login")
+                coordinator = MoreCoordinator(store: store)
+            case .mainTabBar:
+                print("AppCoordinator: this is mainTAbBar")
+                coordinator = MainTabCoordinator(store: store)
+            case .debug:
+                print("AppCoordinator: this isDebug")
+                coordinator = MoreCoordinator(store: store)
+            case .crashReporter:
+                print("AppCoordinator: this is Crash")
+                coordinator = MoreCoordinator(store: store)
+            }
+            
+            scenePrefix = segment.rawValue
+            coordinator.start(route: sceneRoute(route))
+            currentScene = coordinator
+            rootBackgroundController.replaceCurrentChildViewController(withViewController: coordinator.rootViewController)
         }
-        
-        var coordinator: AnyCoordinator
     
-        switch segment {
-        case .login:
-            print("AppCoordinator: this is login")
-            coordinator = MoreCoordinator(store: store)
-        case .mainTabBar:
-            print("AppCoordinator: this is mainTAbBar")
-            coordinator = MainTabCoordinator(store: store)
-            //coordinator = MoreCoordinator(store: store)
-        case .debug:
-            print("AppCoordinator: this isDebug")
-            coordinator = MoreCoordinator(store: store)
-        case .crashReporter:
-            print("AppCoordinator: this is Crash")
-            coordinator = MoreCoordinator(store: store)
-        }
-        
-        scenePrefix = segment.rawValue
-        coordinator.start(route: sceneRoute(rt))
-        currentScene = coordinator
-        rootBackgroundController.replaceCurrentChildViewController(withViewController: coordinator.rootViewController)
-    }
-}
+    
+}//end class
 
 

@@ -16,6 +16,8 @@
 		A6240F84243A88B30053BDDD /* BackgroundContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F83243A88B30053BDDD /* BackgroundContainerViewController.swift */; };
 		A6240F87243A8AE80053BDDD /* BackgroundContainerViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6240F86243A8AE80053BDDD /* BackgroundContainerViewController.storyboard */; };
 		A6240F89243B56400053BDDD /* WindowState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F88243B56400053BDDD /* WindowState.swift */; };
+		A626210A2451D70600A7FA2B /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62621092451D70600A7FA2B /* LoginViewController.storyboard */; };
+		A626210C2451D7EF00A7FA2B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A626210B2451D7EF00A7FA2B /* LoginViewController.swift */; };
 		A6430288243B9D8000204849 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6430287243B9D8000204849 /* ExtensionString.swift */; };
 		A643028B243B9DF300204849 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028A243B9DF300204849 /* GlobalConstants.swift */; };
 		A643028E243B9ED500204849 /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028D243B9ED500204849 /* ExtensionDate.swift */; };
@@ -49,6 +51,8 @@
 		A6240F83243A88B30053BDDD /* BackgroundContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainerViewController.swift; sourceTree = "<group>"; };
 		A6240F86243A8AE80053BDDD /* BackgroundContainerViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = BackgroundContainerViewController.storyboard; sourceTree = "<group>"; };
 		A6240F88243B56400053BDDD /* WindowState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowState.swift; sourceTree = "<group>"; };
+		A62621092451D70600A7FA2B /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
+		A626210B2451D7EF00A7FA2B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A6430287243B9D8000204849 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
 		A643028A243B9DF300204849 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
 		A643028D243B9ED500204849 /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
@@ -132,6 +136,7 @@
 				A6907B762437E67000C11BA9 /* ViewController.swift */,
 				A6240F83243A88B30053BDDD /* BackgroundContainerViewController.swift */,
 				A6EF28A9243E2E4400098577 /* MoreViewController.swift */,
+				A626210B2451D7EF00A7FA2B /* LoginViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -143,6 +148,7 @@
 				A6907B7D2437E67100C11BA9 /* LaunchScreen.storyboard */,
 				A6240F86243A8AE80053BDDD /* BackgroundContainerViewController.storyboard */,
 				A6EF28AB243E3A2A00098577 /* MoreViewController.storyboard */,
+				A62621092451D70600A7FA2B /* LoginViewController.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 				A6907B7F2437E67100C11BA9 /* LaunchScreen.storyboard in Resources */,
 				A6EF28AC243E3A2A00098577 /* MoreViewController.storyboard in Resources */,
 				A6240F87243A8AE80053BDDD /* BackgroundContainerViewController.storyboard in Resources */,
+				A626210A2451D70600A7FA2B /* LoginViewController.storyboard in Resources */,
 				A6907B7C2437E67100C11BA9 /* Assets.xcassets in Resources */,
 				A6907B7A2437E67000C11BA9 /* Main.storyboard in Resources */,
 			);
@@ -341,6 +348,7 @@
 				A6EF28AA243E2E4400098577 /* MoreViewController.swift in Sources */,
 				A6240F7D24397CE50053BDDD /* AppReducer.swift in Sources */,
 				A6907B772437E67000C11BA9 /* ViewController.swift in Sources */,
+				A626210C2451D7EF00A7FA2B /* LoginViewController.swift in Sources */,
 				A6240F7A24393CE00053BDDD /* AppState.swift in Sources */,
 				A6430293243BA00B00204849 /* Formatters.swift in Sources */,
 				A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */,

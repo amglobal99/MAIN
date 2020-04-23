@@ -64,6 +64,8 @@ typealias MainStore = Cordux.Store<AppState>?
 
 @UIApplicationMain
 
+//MARk:- *********** APP DELEGATE Class ****************
+
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var windowCoordinator: WindowCoordinator!
@@ -72,8 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return windowCoordinator.mainWindow
     }
 
-    
-    
+    //MARK:- ******* DID FINISH LAUNCHING ************
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         UIViewController.swizzleLifecycleDelegatingViewControllerMethods()
