@@ -20,6 +20,7 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
         case debug
         case crashReporter
     }
+    
     var scenePrefix: String = RouteSegment.login.rawValue
     let store: Store<AppState>
     var currentScene: AnyCoordinator?
@@ -82,7 +83,7 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
             switch segment {
             case .login:
                 print("AppCoordinator: this is login")
-                coordinator = MoreCoordinator(store: store)
+                coordinator = LoginCoordinator(store: store)
             case .mainTabBar:
                 print("AppCoordinator: this is mainTAbBar")
                 coordinator = MainTabCoordinator(store: store)

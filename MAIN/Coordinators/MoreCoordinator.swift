@@ -82,14 +82,10 @@ class MoreCoordinator: Coordinator {
     //MARK: - Start
     
     func start(route: Cordux.Route) {
-        
         print("More: ***** START ******")
-        
-        
         let moreViewController = MoreViewController.build()
        // moreViewController.handler = self
         moreViewController.corduxContext = Context(route, lifecycleDelegate: self)
-        
         _navigationController = UINavigationController(rootViewController: moreViewController)
         _navigationController.navigationBar.isTranslucent = false
     }
@@ -113,7 +109,7 @@ class MoreCoordinator: Coordinator {
 extension MoreCoordinator: ViewControllerLifecycleDelegate {
     
     func viewWillAppear(_ viewController: UIViewController) {
-       // store.subscribe(viewController)
+       //store.subscribe(viewController)
     }
     
     func viewWillDisappear(_ viewController: UIViewController) {

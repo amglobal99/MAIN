@@ -25,6 +25,10 @@
 		A6430293243BA00B00204849 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6430292243BA00B00204849 /* Formatters.swift */; };
 		A663CA7D243BD17900EA9709 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A663CA7C243BD17900EA9709 /* LoginState.swift */; };
 		A663CA7F243BD76400EA9709 /* BrowsingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A663CA7E243BD76400EA9709 /* BrowsingState.swift */; };
+		A677ABDB2451E41800776066 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A677ABDA2451E41800776066 /* UserLocationManager.swift */; };
+		A677ABDF2451EB8000776066 /* Provider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A677ABDE2451EB8000776066 /* Provider.swift */; };
+		A677ABE12451ECCD00776066 /* AsyncProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = A677ABE02451ECCD00776066 /* AsyncProvider.swift */; };
+		A677ABE32451ED5E00776066 /* Promises.swift in Sources */ = {isa = PBXBuildFile; fileRef = A677ABE22451ED5E00776066 /* Promises.swift */; };
 		A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B722437E67000C11BA9 /* AppDelegate.swift */; };
 		A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B742437E67000C11BA9 /* SceneDelegate.swift */; };
 		A6907B7C2437E67100C11BA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6907B7B2437E67100C11BA9 /* Assets.xcassets */; };
@@ -57,6 +61,10 @@
 		A6430292243BA00B00204849 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		A663CA7C243BD17900EA9709 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		A663CA7E243BD76400EA9709 /* BrowsingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsingState.swift; sourceTree = "<group>"; };
+		A677ABDA2451E41800776066 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
+		A677ABDE2451EB8000776066 /* Provider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Provider.swift; sourceTree = "<group>"; };
+		A677ABE02451ECCD00776066 /* AsyncProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncProvider.swift; sourceTree = "<group>"; };
+		A677ABE22451ED5E00776066 /* Promises.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promises.swift; sourceTree = "<group>"; };
 		A6907B6F2437E67000C11BA9 /* MAIN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAIN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6907B722437E67000C11BA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6907B742437E67000C11BA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -166,8 +174,26 @@
 			children = (
 				A643028F243B9F9400204849 /* Theme.swift */,
 				A6430292243BA00B00204849 /* Formatters.swift */,
+				A677ABDA2451E41800776066 /* UserLocationManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A677ABDC2451E4C000776066 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		A677ABDD2451EB4500776066 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				A677ABDE2451EB8000776066 /* Provider.swift */,
+				A677ABE02451ECCD00776066 /* AsyncProvider.swift */,
+				A677ABE22451ED5E00776066 /* Promises.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		A6907B662437E67000C11BA9 = {
@@ -191,6 +217,8 @@
 		A6907B712437E67000C11BA9 /* MAIN */ = {
 			isa = PBXGroup;
 			children = (
+				A677ABDD2451EB4500776066 /* Providers */,
+				A677ABDC2451E4C000776066 /* UI */,
 				A6907B722437E67000C11BA9 /* AppDelegate.swift */,
 				A6907B742437E67000C11BA9 /* SceneDelegate.swift */,
 				A6240F82243A88720053BDDD /* ViewControllers */,
@@ -338,12 +366,15 @@
 				A6240F7D24397CE50053BDDD /* AppReducer.swift in Sources */,
 				A626210C2451D7EF00A7FA2B /* LoginViewController.swift in Sources */,
 				A6240F7A24393CE00053BDDD /* AppState.swift in Sources */,
+				A677ABDF2451EB8000776066 /* Provider.swift in Sources */,
+				A677ABDB2451E41800776066 /* UserLocationManager.swift in Sources */,
 				A6430293243BA00B00204849 /* Formatters.swift in Sources */,
 				A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */,
 				A663CA7F243BD76400EA9709 /* BrowsingState.swift in Sources */,
 				A6CEB28E243CA96E00DBA3F9 /* LoginCoordinator.swift in Sources */,
 				A663CA7D243BD17900EA9709 /* LoginState.swift in Sources */,
 				A6240F81243A682E0053BDDD /* AppCoordinator.swift in Sources */,
+				A677ABE12451ECCD00776066 /* AsyncProvider.swift in Sources */,
 				A6240F7724393B300053BDDD /* WindowCoordinator.swift in Sources */,
 				A6240F7F243A67C50053BDDD /* MockCoordinator.swift in Sources */,
 				A6EF28AE243E3CE000098577 /* Localization.swift in Sources */,
@@ -352,6 +383,7 @@
 				A6240F84243A88B30053BDDD /* BackgroundContainerViewController.swift in Sources */,
 				A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */,
 				A6EF28A8243E2DA000098577 /* MoreCoordinator.swift in Sources */,
+				A677ABE32451ED5E00776066 /* Promises.swift in Sources */,
 				A643028B243B9DF300204849 /* GlobalConstants.swift in Sources */,
 				A6240F89243B56400053BDDD /* WindowState.swift in Sources */,
 				A643028E243B9ED500204849 /* ExtensionDate.swift in Sources */,

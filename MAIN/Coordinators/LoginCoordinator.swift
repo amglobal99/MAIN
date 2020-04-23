@@ -76,6 +76,10 @@ class LoginCoordinator: Coordinator {
 extension LoginCoordinator: ViewControllerLifecycleDelegate {
     
     func viewWillAppear(_ viewController: UIViewController) {
+//        if let vc = viewController as? LoginViewController {
+//            store.subscribe(vc, LoginViewDataSource.make(provider: provider))
+//        }
+        
        // store.subscribe(viewController)
     }
     

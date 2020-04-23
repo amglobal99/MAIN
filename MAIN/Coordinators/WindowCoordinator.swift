@@ -9,7 +9,7 @@
 import UIKit
 import Cordux
 
-//MARK:- Protocols
+//MARK:- ******** Protocols **********
 
 protocol WindowModelType {
     //var isHidden: Bool { get }
@@ -26,7 +26,7 @@ enum WindowKind {
 }
 
 
-//MARK:- Window Model
+//MARK:- ******** Window Model **********
 
 struct WindowModel: WindowModelType {
     let isHidden: Bool
@@ -40,7 +40,7 @@ struct WindowGroupModel: WindowGroupModelType {
     let keyWindow: WindowKind
 }
 
-//MARK:- make()
+//MARK:- *************** MAKE() ******************
 
 extension WindowGroupModel {
     
@@ -108,8 +108,8 @@ class WindowCoordinator: Coordinator, Renderer {
         /// set initial route segment in app state
         
         //TODO: .... check this section
-       // state.route = AppCoordinator.RouteSegment.login.route()
-        state.route = AppCoordinator.RouteSegment.mainTabBar.route()
+        //state.route = AppCoordinator.RouteSegment.login.route()
+         state.route = AppCoordinator.RouteSegment.mainTabBar.route()
         
         /// create store
         store = Store(initialState: state, reducer: AppReducer())
