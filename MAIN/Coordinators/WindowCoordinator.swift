@@ -114,12 +114,9 @@ class WindowCoordinator: Coordinator, Renderer {
         /// create store
         store = Store(initialState: state, reducer: AppReducer())
         /// build the background container view controller
-        
         let mainViewController = BackgroundContainerViewController.build(withChild: UIViewController())
-        
         /// assign coordinator for main window
         coordinatorForMainWindow = AppCoordinator(store: store, container: mainViewController)
-        
         /// set up the main window
         mainWindow = UIWindow(frame: UIScreen.main.bounds)
         setupMainWindow()
