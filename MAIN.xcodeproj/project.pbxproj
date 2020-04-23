@@ -27,7 +27,6 @@
 		A663CA7F243BD76400EA9709 /* BrowsingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A663CA7E243BD76400EA9709 /* BrowsingState.swift */; };
 		A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B722437E67000C11BA9 /* AppDelegate.swift */; };
 		A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B742437E67000C11BA9 /* SceneDelegate.swift */; };
-		A6907B772437E67000C11BA9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6907B762437E67000C11BA9 /* ViewController.swift */; };
 		A6907B7C2437E67100C11BA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A6907B7B2437E67100C11BA9 /* Assets.xcassets */; };
 		A6CEB28E243CA96E00DBA3F9 /* LoginCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */; };
 		A6EF28A6243E2B2900098577 /* MainTabCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF28A5243E2B2900098577 /* MainTabCoordinator.swift */; };
@@ -61,7 +60,6 @@
 		A6907B6F2437E67000C11BA9 /* MAIN.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MAIN.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A6907B722437E67000C11BA9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A6907B742437E67000C11BA9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		A6907B762437E67000C11BA9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A6907B7B2437E67100C11BA9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A6907B802437E67100C11BA9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A6CEB28D243CA96E00DBA3F9 /* LoginCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCoordinator.swift; sourceTree = "<group>"; };
@@ -129,7 +127,6 @@
 		A6240F82243A88720053BDDD /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A6907B762437E67000C11BA9 /* ViewController.swift */,
 				A6240F83243A88B30053BDDD /* BackgroundContainerViewController.swift */,
 				A6EF28A9243E2E4400098577 /* MoreViewController.swift */,
 				A626210B2451D7EF00A7FA2B /* LoginViewController.swift */,
@@ -339,7 +336,6 @@
 			files = (
 				A6EF28AA243E2E4400098577 /* MoreViewController.swift in Sources */,
 				A6240F7D24397CE50053BDDD /* AppReducer.swift in Sources */,
-				A6907B772437E67000C11BA9 /* ViewController.swift in Sources */,
 				A626210C2451D7EF00A7FA2B /* LoginViewController.swift in Sources */,
 				A6240F7A24393CE00053BDDD /* AppState.swift in Sources */,
 				A6430293243BA00B00204849 /* Formatters.swift in Sources */,
