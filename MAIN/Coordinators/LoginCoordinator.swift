@@ -9,40 +9,56 @@
 import Foundation
 import Cordux
 
+struct LoginSubscription {
+    let initialization: InitializationKind
 
-//MARK: - Coordinator Class
+    init(_ state: AppState) {
+        initialization = state.initialization
+    }
+}
 
-class LoginCoordinator: Coordinator {
+
+ 
+//MARK: - ********** COORDINATOR Class  **********************
+
+class LoginCoordinator: NSObject, SceneCoordinator, SubscriberType, Providing  {
+    
     
     enum RouteSegment: String, RouteConvertible {
-        case lunchOut
-        case language
-    }
+           case downloading
+           case signin
+       }
     
+    var scenePrefix: String = RouteSegment.downloading.rawValue
+    var currentScene: AnyCoordinator?
     let store: Store<AppState>
     var route: Cordux.Route = []
-    
-   // var provider: ProviderType!
-   // var moreViewController: MoreViewController!
+    var provider: ProviderType!
+     var loginController: LoginViewController?
     var presentedCoordinator: AnyCoordinator?
     var _navigationController: UINavigationController!
-   // var lunchCoordinator: LunchCoordinator?
-    
+   
     var rootViewController: UIViewController {
         return _navigationController
     }
 
-    
-    //MARK: - User Preferences
-    
-//    var currentPreferences: [UserPreferenceKind] = []
+    //    var currentPreferences: [UserPreferenceKind] = []
     var displayMapEnabled: Bool = true
     var displayFeaturedNoteEnabled:  Bool = false
+    
+    
+    func changeScene(_ route: Route) {
+           //
+       }
+       
+    
     
     //MARK: - Initializer
     
     init(store: Store<AppState>) {
         self.store = store
+        super.init()
+        store.subscribe(self, LoginSubscription.init)
     }
 
     //MARK: - Start
@@ -50,12 +66,19 @@ class LoginCoordinator: Coordinator {
     func start(route: Cordux.Route) {
         print("Login Coordinator: ***** START ******")
         let loginViewController = LoginViewController.build()
-       // moreViewController.handler = self
+        // loginViewController.handler = self
         loginViewController.corduxContext = Context(route, lifecycleDelegate: self)
-        
         _navigationController = UINavigationController(rootViewController: loginViewController)
         _navigationController.navigationBar.isTranslucent = false
     }
+    
+    
+       
+    func newState(_ state: LoginSubscription) {
+
+    }
+    
+    
     
     //MARK: - Push View Controller
     
@@ -64,7 +87,8 @@ class LoginCoordinator: Coordinator {
         coordinator.start(route: route)
         _navigationController.pushViewController(coordinator.rootViewController, animated: true)
     }
-}
+    
+} //end class
 
 
 
@@ -74,6 +98,17 @@ class LoginCoordinator: Coordinator {
 //MARK: - View Lifecycle Delegate
 
 extension LoginCoordinator: ViewControllerLifecycleDelegate {
+    
+    
+    @objc func viewDidLoad(_ viewController: UIViewController) {
+            DispatchQueue.main.async(execute: setupDatabase)
+        
+    }
+    
+    
+    
+    
+    /*
     
     func viewWillAppear(_ viewController: UIViewController) {
 //        if let vc = viewController as? LoginViewController {
@@ -88,11 +123,55 @@ extension LoginCoordinator: ViewControllerLifecycleDelegate {
       // store.unsubscribe(viewController)
         
     }
+    
+    */
+    
+    
+    @objc func viewWillAppear(_ viewController: UIViewController) {
+        switch viewController {
+        case let viewController as LoginViewController:
+            print("test")
+          //  store.subscribe(viewController, LoginViewModel.init)
+        default:
+            break
+        }
+    }
+    
+    @objc func viewWillDisappear(_ vc: UIViewController) {
+        guard let viewController = vc as? LoginViewController else {
+            return
+        }
+       // store.unsubscribe(viewController)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
 
-//MARK: - Handler for MoreViewController
 
 
+
+
+extension LoginCoordinator {
+    
+    func setupDatabase() {
+        
+        
+        
+        
+        
+    }
+    
+    
+}
 
 
 

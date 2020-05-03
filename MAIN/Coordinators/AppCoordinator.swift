@@ -26,6 +26,8 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
     var currentScene: AnyCoordinator?
     let rootBackgroundController: BackgroundContainerViewController
     weak var windowCoordinator: WindowCoordinator?
+    var provider: ProviderType!
+    var userLocationManager: UserLocationManagerType!
     
     var rootViewController: UIViewController {
         return rootBackgroundController
@@ -44,7 +46,7 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
     func start(route: Cordux.Route) {
         print("App Coordinator: start()  .... route: \(route)")
         store.subscribe(self, RouteSubscription.init)
-        //setupLocationManager()
+        setupLocationManager()
         changeScene(route)
     }
 
@@ -58,12 +60,10 @@ final class AppCoordinator: SceneCoordinator, SubscriberType {
 
     //MARK:-
     
-//    func setupLocationManager() {
-//       // userLocationManager = UserLocationManager(store: store, rootViewController: rootViewController)
-//    }
+    func setupLocationManager() {
+       userLocationManager = UserLocationManager(store: store, rootViewController: rootViewController)
+    }
 
-    
-    
     
     //FIXME:- THIS NEEDS TO BE FIXED
     

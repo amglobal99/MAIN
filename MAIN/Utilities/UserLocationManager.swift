@@ -10,7 +10,37 @@ import Foundation
 import Cordux
 import CoreLocation
 
+protocol UserLocationManagerType {
+    var provider: ProviderType! { get set }
+    var rootViewController: UIViewController { get }
 
+    func report(_ locations: [CLLocation])
+}
+
+final class UserLocationManager: UserLocationManagerType {
+    
+    var provider: ProviderType!
+    let rootViewController: UIViewController
+    fileprivate var store: Store<AppState>
+    
+    init(store: Store<AppState>, rootViewController: UIViewController) {
+           self.store = store
+           self.rootViewController = rootViewController
+    }
+        
+        
+        
+    func report(_ locations: [CLLocation]) {
+        
+    }
+    
+    
+}
+
+
+
+
+/// ********* THIS IS FROM THE RSR APP *************************
 
 /*
 // Responsible for displaying initial auth request alert
