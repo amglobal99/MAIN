@@ -47,6 +47,18 @@ enum LoadingState<T> {
     case failure(Error)
 }
 
+//enum Initialization {
+//    case uninitialized
+//    case initialized(Authentication)
+//}
+//
+//enum Authentication {
+//    case authenticated(BrowsingState)
+//    case unauthenticated(LoginState)
+//}
+
+
+
 
 //MARK:- Route Subscription
 

@@ -10,8 +10,6 @@ import Foundation
 import UIKit
 import Cordux
 
-
-
 //MARK: - Handler Protocol
 
 protocol LoginViewControllerHandler: class {
@@ -23,6 +21,14 @@ protocol LoginViewControllerHandler: class {
     func chooseLanguage()
     func refreshSyncInfo()
 }
+
+
+struct LoginViewModel {
+    let isSigningIn: Bool
+}
+
+
+
 
 //MARK:- View Controller
 
@@ -48,7 +54,7 @@ class LoginViewController: UIViewController {
         vc.tabBarItem.image = UIImage(named: "icoHelpSelected")
         vc.tabBarItem.selectedImage = UIImage(named: "icoHelpSelected")
         vc.title = "Login"
-        vc.view.backgroundColor = Theme.Colors.backgroundGreyColor()
+        //vc.view.backgroundColor = Theme.Colors.backgroundGreyColor()
         return vc
     }
     

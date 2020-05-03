@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		42B16E49457105B831193A58 /* Pods_MAIN.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 91467950379961B900E76593 /* Pods_MAIN.framework */; };
+		A621D08B245F7C95009E4617 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A621D08A245F7C95009E4617 /* MapKit.framework */; };
 		A6240F7724393B300053BDDD /* WindowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F7624393B300053BDDD /* WindowCoordinator.swift */; };
 		A6240F7A24393CE00053BDDD /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F7924393CE00053BDDD /* AppState.swift */; };
 		A6240F7D24397CE50053BDDD /* AppReducer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6240F7C24397CE50053BDDD /* AppReducer.swift */; };
@@ -45,6 +46,7 @@
 		0FF5D73E16F3DD2FCB1ECE6D /* Pods-MAIN.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAIN.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MAIN/Pods-MAIN.debug.xcconfig"; sourceTree = "<group>"; };
 		6AAF8C8EC88A12CC78C5E5EE /* Pods-MAIN.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MAIN.release.xcconfig"; path = "Pods/Target Support Files/Pods-MAIN/Pods-MAIN.release.xcconfig"; sourceTree = "<group>"; };
 		91467950379961B900E76593 /* Pods_MAIN.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MAIN.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A621D08A245F7C95009E4617 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		A6240F7624393B300053BDDD /* WindowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowCoordinator.swift; sourceTree = "<group>"; };
 		A6240F7924393CE00053BDDD /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		A6240F7C24397CE50053BDDD /* AppReducer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppReducer.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A621D08B245F7C95009E4617 /* MapKit.framework in Frameworks */,
 				42B16E49457105B831193A58 /* Pods_MAIN.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -104,6 +107,7 @@
 		27B90A1BA81FB377E6B447A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A621D08A245F7C95009E4617 /* MapKit.framework */,
 				91467950379961B900E76593 /* Pods_MAIN.framework */,
 			);
 			name = Frameworks;
