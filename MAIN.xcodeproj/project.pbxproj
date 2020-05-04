@@ -40,6 +40,7 @@
 		A6EF28AA243E2E4400098577 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF28A9243E2E4400098577 /* MoreViewController.swift */; };
 		A6EF28AC243E3A2A00098577 /* MoreViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A6EF28AB243E3A2A00098577 /* MoreViewController.storyboard */; };
 		A6EF28AE243E3CE000098577 /* Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6EF28AD243E3CE000098577 /* Localization.swift */; };
+		A6F211C82460631A00E928D4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A6F211C72460631A00E928D4 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		A6EF28A9243E2E4400098577 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		A6EF28AB243E3A2A00098577 /* MoreViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MoreViewController.storyboard; sourceTree = "<group>"; };
 		A6EF28AD243E3CE000098577 /* Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localization.swift; sourceTree = "<group>"; };
+		A6F211C72460631A00E928D4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6F211C82460631A00E928D4 /* CoreData.framework in Frameworks */,
 				A621D08B245F7C95009E4617 /* MapKit.framework in Frameworks */,
 				42B16E49457105B831193A58 /* Pods_MAIN.framework in Frameworks */,
 			);
@@ -107,6 +110,7 @@
 		27B90A1BA81FB377E6B447A6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A6F211C72460631A00E928D4 /* CoreData.framework */,
 				A621D08A245F7C95009E4617 /* MapKit.framework */,
 				91467950379961B900E76593 /* Pods_MAIN.framework */,
 			);
