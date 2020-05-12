@@ -20,7 +20,7 @@
 		A626210A2451D70600A7FA2B /* LoginViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A62621092451D70600A7FA2B /* LoginViewController.storyboard */; };
 		A626210C2451D7EF00A7FA2B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A626210B2451D7EF00A7FA2B /* LoginViewController.swift */; };
 		A6430288243B9D8000204849 /* ExtensionString.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6430287243B9D8000204849 /* ExtensionString.swift */; };
-		A643028B243B9DF300204849 /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028A243B9DF300204849 /* GlobalConstants.swift */; };
+		A643028B243B9DF300204849 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028A243B9DF300204849 /* Globals.swift */; };
 		A643028E243B9ED500204849 /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028D243B9ED500204849 /* ExtensionDate.swift */; };
 		A6430290243B9F9400204849 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028F243B9F9400204849 /* Theme.swift */; };
 		A6430293243BA00B00204849 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6430292243BA00B00204849 /* Formatters.swift */; };
@@ -60,7 +60,7 @@
 		A62621092451D70600A7FA2B /* LoginViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LoginViewController.storyboard; sourceTree = "<group>"; };
 		A626210B2451D7EF00A7FA2B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A6430287243B9D8000204849 /* ExtensionString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionString.swift; sourceTree = "<group>"; };
-		A643028A243B9DF300204849 /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		A643028A243B9DF300204849 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		A643028D243B9ED500204849 /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		A643028F243B9F9400204849 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A6430292243BA00B00204849 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
@@ -177,7 +177,7 @@
 		A643028C243B9DFE00204849 /* Globals */ = {
 			isa = PBXGroup;
 			children = (
-				A643028A243B9DF300204849 /* GlobalConstants.swift */,
+				A643028A243B9DF300204849 /* Globals.swift */,
 			);
 			path = Globals;
 			sourceTree = "<group>";
@@ -190,6 +190,15 @@
 				A677ABDA2451E41800776066 /* UserLocationManager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		A658B840246ACE0100A1E448 /* Delegate */ = {
+			isa = PBXGroup;
+			children = (
+				A6907B722437E67000C11BA9 /* AppDelegate.swift */,
+				A6907B742437E67000C11BA9 /* SceneDelegate.swift */,
+			);
+			path = Delegate;
 			sourceTree = "<group>";
 		};
 		A677ABDC2451E4C000776066 /* UI */ = {
@@ -232,9 +241,8 @@
 			children = (
 				A677ABDD2451EB4500776066 /* Providers */,
 				A677ABDC2451E4C000776066 /* UI */,
-				A6907B722437E67000C11BA9 /* AppDelegate.swift */,
+				A658B840246ACE0100A1E448 /* Delegate */,
 				A658B83D246AC0B800A1E448 /* Model.xcdatamodeld */,
-				A6907B742437E67000C11BA9 /* SceneDelegate.swift */,
 				A6240F82243A88720053BDDD /* ViewControllers */,
 				A6240F85243A8A720053BDDD /* Storyboards */,
 				A6907B7B2437E67100C11BA9 /* Assets.xcassets */,
@@ -400,7 +408,7 @@
 				A6907B752437E67000C11BA9 /* SceneDelegate.swift in Sources */,
 				A6EF28A8243E2DA000098577 /* MoreCoordinator.swift in Sources */,
 				A677ABE32451ED5E00776066 /* Promises.swift in Sources */,
-				A643028B243B9DF300204849 /* GlobalConstants.swift in Sources */,
+				A643028B243B9DF300204849 /* Globals.swift in Sources */,
 				A6240F89243B56400053BDDD /* WindowState.swift in Sources */,
 				A643028E243B9ED500204849 /* ExtensionDate.swift in Sources */,
 				A6430290243B9F9400204849 /* Theme.swift in Sources */,

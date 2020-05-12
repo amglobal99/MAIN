@@ -73,3 +73,15 @@ struct GlobalConstants {
   
   
 }  // end struct GlobalConstants
+
+
+
+
+
+
+struct CommonFunctions {
+    
+    
+    
+    
+}
