@@ -24,6 +24,7 @@
 		A643028E243B9ED500204849 /* ExtensionDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028D243B9ED500204849 /* ExtensionDate.swift */; };
 		A6430290243B9F9400204849 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = A643028F243B9F9400204849 /* Theme.swift */; };
 		A6430293243BA00B00204849 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6430292243BA00B00204849 /* Formatters.swift */; };
+		A658B83F246AC0B800A1E448 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = A658B83D246AC0B800A1E448 /* Model.xcdatamodeld */; };
 		A663CA7D243BD17900EA9709 /* LoginState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A663CA7C243BD17900EA9709 /* LoginState.swift */; };
 		A663CA7F243BD76400EA9709 /* BrowsingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = A663CA7E243BD76400EA9709 /* BrowsingState.swift */; };
 		A677ABDB2451E41800776066 /* UserLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A677ABDA2451E41800776066 /* UserLocationManager.swift */; };
@@ -63,6 +64,7 @@
 		A643028D243B9ED500204849 /* ExtensionDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDate.swift; sourceTree = "<group>"; };
 		A643028F243B9F9400204849 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		A6430292243BA00B00204849 /* Formatters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		A658B83E246AC0B800A1E448 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		A663CA7C243BD17900EA9709 /* LoginState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginState.swift; sourceTree = "<group>"; };
 		A663CA7E243BD76400EA9709 /* BrowsingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowsingState.swift; sourceTree = "<group>"; };
 		A677ABDA2451E41800776066 /* UserLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocationManager.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 				A677ABDD2451EB4500776066 /* Providers */,
 				A677ABDC2451E4C000776066 /* UI */,
 				A6907B722437E67000C11BA9 /* AppDelegate.swift */,
+				A658B83D246AC0B800A1E448 /* Model.xcdatamodeld */,
 				A6907B742437E67000C11BA9 /* SceneDelegate.swift */,
 				A6240F82243A88720053BDDD /* ViewControllers */,
 				A6240F85243A8A720053BDDD /* Storyboards */,
@@ -379,6 +382,7 @@
 				A626210C2451D7EF00A7FA2B /* LoginViewController.swift in Sources */,
 				A6240F7A24393CE00053BDDD /* AppState.swift in Sources */,
 				A677ABDF2451EB8000776066 /* Provider.swift in Sources */,
+				A658B83F246AC0B800A1E448 /* Model.xcdatamodeld in Sources */,
 				A677ABDB2451E41800776066 /* UserLocationManager.swift in Sources */,
 				A6430293243BA00B00204849 /* Formatters.swift in Sources */,
 				A6907B732437E67000C11BA9 /* AppDelegate.swift in Sources */,
@@ -580,6 +584,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		A658B83D246AC0B800A1E448 /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				A658B83E246AC0B800A1E448 /* Model.xcdatamodel */,
+			);
+			currentVersion = A658B83E246AC0B800A1E448 /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = A6907B672437E67000C11BA9 /* Project object */;
 }
